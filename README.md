@@ -1,3 +1,3 @@
 # TIL (Today I Learned)
 
-1. 변경 사항 저장
+배운 내용 정리
