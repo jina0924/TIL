@@ -52,17 +52,16 @@
 
 여는 태그 + 닫는 태그
 
-- html : 문서의 최상위(root) 요소
+- **html** : 문서의 최상위(root) 요소
 
-- head : 문서 메타데이터 요소
-
+- **head** : 문서 메타데이터 요소
   - 메타데이터란? - 데이터에 대한 데이터. 데이터에 관한 구조화된 데이터
     - ex) 사진 정보, 도서관에서 서지기술용으로 만든 것
   - 문서 제목, 인코딩, 스타일, 외부 파일 로딩 등
-
+  
   - 일반적으로 브라우저에 나타나지 않는 내용
-
-- body : 문서 본문 요소
+  
+- **body** : 문서 본문 요소
   - 실제 화면 구성과 관련된 내용
 
 ```html
@@ -165,23 +164,21 @@ ex) `<a href="https://google.com"></a>>`
 - 속성 지정 스타일 가이드
   - `=`양 옆에 공백 x
   - 속성에 들어가는 값은 쌍따옴표 사용
-- 속성을 통해 태그의 부가적인 정보를 설정할 수 있음
+- 속성을 통해 태그의 **부가적인 정보**를 설정할 수 있음
 - 요소는 속성을 가질 수 있으며, 경로나 크기와 같은 추가적인 정보를 제공
-- 요소의 시작 태그에 작성하며 보통 이름과 값이 하나의 쌍으로 존재
+- 요소의 **시작 태그에 작성**하며 보통 **이름과 값이 하나의 쌍**으로 존재
 - 태그와 상관없이 사용 가능한 속성(HTML Global Attribute)들도 있음
 
 
 
 ### HTML Global Attribute
 
-##### !!!!!!!!!!!추가!!!!!!!!!!!!!
-
-- id : 문서 전체에서 유일한 고유 식별자 지정
-- class : 공백으로 구분된 해당 요소의 클래스의 목록 -> 자주 사용함(클래스로 모듈화)
-- data-*
-- style : inline 스타일
-- title
-- tabindex
+- **id** : 문서 전체에서 유일한 고유 식별자 지정
+- **class** : 공백으로 구분된 해당 요소의 클래스의 목록 -> 자주 사용함(클래스로 모듈화)
+- **data-*** : 페이지에 개인 사용자 정의 데이터를 저장하기 위해 사용
+- **style** : inline 스타일
+- **title** : 요소에 대한 추가 정보 지정
+- **tabindex** : 요소의 탭 순서
 
 
 
@@ -190,28 +187,30 @@ ex) `<a href="https://google.com"></a>>`
 > semantic : 의미론적인
 
 - HTML5에서 등장한 의미론적 요소를 담은 태그의 등장
-  - `<div>` : division. 구역 -> 기존 영역을 의미하는 div태그를 대체하여 사용
+  - `<div>` : division. 구역 -> 기존 영역을 의미하는 **div태그를 대체하여 사용**
 - 대표적인 태그 목록
-  - header
-  - nav
-  - aside
-  - section
-  - article
-  - footer
+  - **header** : 문서 전체나 섹션의 헤더(머리말 부분)
+  - **nav** : 내비게이션
+  - **aside** : 사이드에 위치한 공간, 메인 콘텐츠와 관련성이 적은 콘텐츠
+  - **section** : 문서의 일반적인 구분, 컨텐츠의 그룹을 표현
+  - **article** : 문서, 페이지, 사이트 안에서 독립적으로 구분되는 영역
+  - **footer** : 마지막 부분
   - 다 div와 동일한 역할을 함
-    - div로 적는것보다 SEO 점수 높음
+    - div로 적는것보다 SEO 점수 높음 -> why? 내용 구분하기 쉬워서
 - Non semantic 요소는 div, span 등이 있으며(의미 딱히 없음)
 - h1, table 태그들도 시맨틱 태그로 볼 수 있음
 - 개발자 및 사용자 뿐만 아니라 검색엔진 등에 의미 있는 정보의 그룹을 태그로 표현
-- 
-
+- 단순히 구역을 나누는 것 뿐만 아니라 '의미'를 가지는 태그들을 활용하기 위한 노력
+- 요소의 의미가 명확해짐 -> 코드의 가독성↑ & 유지보수 쉬움
 - **검색엔진최적화(SEO)**를 위해서 메타태그, 시맨틱 태그 등을 통한 마크업을 효과적으로 활용해야함
 
 
 
 ### HTML with 개발자 도구
 
-- 
+>chrome : 마우스 우클릭 → 검사 / ctrl + shift + i
+
+- elements : 해당 요소의 HTML 태그
 
 
 
@@ -219,9 +218,10 @@ ex) `<a href="https://google.com"></a>>`
 
 html 태그
 
-- 인라인 요소
+- inline
   - 컨텐츠의 크기만큼 차지함
-- 블록요소
+
+- block
   - 한줄을 다 차지함
 - 인라인 블록 요소(번외)
 
@@ -231,31 +231,39 @@ html 태그
 
 | 태그                               | 설명                                                         |
 | ---------------------------------- | ------------------------------------------------------------ |
-| `<a></a>`                          |                                                              |
+| `<a></a>`                          | href 속성을 활용하여 다른 URL로 연결하는 하이퍼링크 생성     |
 | `<b></b>`<br />`<strong></strong>` | 같은 내용인데 위에는 굵은 글씨<br />밑에는 중요내용 강조(의미론) -> 권장 |
 | `<i></i>`<br />`<em></em>`         | 기울임 글씨 요소<br />중요 내용 강조하고자 하는 요소         |
-| `<br>`                             |                                                              |
-| `<img>`                            |                                                              |
-| `<span></span>`                    |                                                              |
+| `<br>`                             | 텍스트 내에 줄 바꿈 생성                                     |
+| `<img>`                            | src 속성을 활용하여 이미지 표현. alt엔 대체텍스트            |
+| `<span></span>`                    | 의미 없는 inline 컨테이너                                    |
 
-b 태그 & strong 태그 : 결과는 똑같지만 그냥 bold하고 싶으면 b태그, 강조하고 싶으면 strong태그
+- `<a></a>`
+  - `<a href="https://edu.ssafy.com/" target="_blank">`
+- `<img>`
+  - `<img src="https://www.ssafy.com/swp/images/sns_img.png" alt="ssafy-logo-image">`
+
+- b 태그 & strong 태그
+  - 결과는 똑같지만 그냥 bold하고 싶으면 b태그, 강조하고 싶으면 strong태그
 
 
 
 ### 그룹 컨텐츠
 
-| 태그                         | 설명                                                |
-| ---------------------------- | --------------------------------------------------- |
-| `<p></p>`                    |                                                     |
-| `<hr>`                       |                                                     |
-| `<ol></ol>`<br />`<ul></ul>` | 순서가 있는 리스트(ordered)<br />순서가 없는 리스트 |
-| `<pre></pre>`                | HTML에 작성한 내용을 그대로 표현                    |
+| 태그                         | 설명                                                   |
+| ---------------------------- | ------------------------------------------------------ |
+| `<p></p>`                    | 하나의 문단(paragraph)                                 |
+| `<hr>`                       | 수평선(A Horizontal Rule). 주제의 분리 의미            |
+| `<ol></ol>`<br />`<ul></ul>` | 순서가 있는 리스트(ordered)<br />순서가 없는 리스트    |
+| `<pre></pre>`                | HTML에 작성한 내용을 그대로 표현                       |
+| `<blockquote></blockquote>`  | 텍스트가 긴 인용문<br />주로 들여쓰기 한 것으로 표현됨 |
+| `<div></div>`                | 의미 없는 block 레벨 컨테이너                          |
 
 - `<pre></pre>`
 
 ```html
 <p>
-    안녕하세요 여러분 <br>
+    안녕하세요 여러분 <br>  <!-- <br> 없으면 밑에 줄도 그대로 옆에 붙어서 출력됨 -->
     하하하하하하
 </p>
 ```
@@ -267,23 +275,84 @@ b 태그 & strong 태그 : 결과는 똑같지만 그냥 bold하고 싶으면 b�
   </pre>
 ```
 
+- `<ol></ol>`
+  1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+- `<ul></ul>`
+  - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+
+
 
 
 ### table
 
 - table의 각 영역을 명시하기 위해 `<thead><tbody><tfoot>`요소를 활용
-  - thead : header
-  - tbody : body. 실제 데이터에 대한 부분
-  - tfoot : footer
-  - caption : 테이블을 설명하기 위한 제목
+  - **thead** : header
+  - **tbody** : body. 실제 데이터에 대한 부분
+  - **tfoot** : footer
+  - **caption** : 테이블을 설명하기 위한 제목
+  - `<tr>`로 **가로 줄**을 구성
+  - 내부에는 `<th>` 혹은 `<td>`로 셀 구성
+  - `colspan`, `rowspan` 속성을 활용하여 셀 병합
+  - `<caption>`을 통해 표 설명 or 제목 작성
+  
+  ```html
+      <table>
+        <!-- thead -->
+        <thead>
+          <!-- tr th 첫 번째 가로줄 -->
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <!-- tbody -->
+        <tbody>
+          <!-- tr td 두 번째 가로줄 -->
+          <tr>
+            <td>1</td>
+            <td>홍길동</td>
+          </tr>
+          <!-- tr td 세 번째 가로줄 -->
+          <tr>
+            <td>2</td>
+            <td>김철수</td>
+          </tr>
+        </tbody>
+        <!-- tfoot 마지막-->
+        <tfoot>
+          <!-- tr td -->
+          <tr>
+            <td>총계</td>
+            <td colspan="2">2명</td>  <!-- html에선 계산x 직접 값 입력해야함 -->
+          </tr>
+        </tfoot>
+        <caption>
+          1반 학생 명단
+        </caption>
+      </table>
+  ```
+  
+  
 
 
 
 ### form★
 
 - `<form>`은 정보(데이터)를 서버에 제출하기 위한 영역
-- 
 
+- `<form>`의 기본 속성
+
+  - action : form을 처리할 서버의 URL
+
+  - method : form을 제출할 때 사용할 HTTP 메서드 (GET 혹은 POST)
+
+  - enctype : method가 psot인 경우 데이터의 유형
+
+    ```html
+    <form action="search" method="GET">
+    </form>
+    ```
 
 
 
@@ -291,20 +360,56 @@ b 태그 & strong 태그 : 결과는 똑같지만 그냥 bold하고 싶으면 b�
 ### input
 
 - 다양한 타입을 가지는 입력 데이터 유형과 위젯이 제공됨
--  
-  -  
 
+- 대표적인 속성
+
+  - name : form control에 적용되는 이름 (이름/값 페어로 전송됨)
+
+  - value : form control에 적용되는 값 (이름/값 페어로 전송됨)
+
+  - required, readonly, autofocus, autocomplete, disabled 등
+
+    ex)
+
+    ```html
+        <div>
+          <input type="text">
+          <input type="submit" value="제출">
+        </div>
+    ```
+
+    ex)
+
+    ```html
+    <form action="/search" method="GET">
+        <input type="text" name="q"		<!-- https://www.google.com/search?q=HTML -->
+    </form>
+    ```
+
+    
 
 
 ### input label
 
-input 태그가 뭘 하는지 설명해줌?
+- input 태그가 뭘 하는지 설명해줌
+- label을 클릭하여 input 자체의 초점을 맞추거나 활성화 시킬 수 있음
 
-체크박스는 for랑 id 일치시킬 것(?)
+- 체크박스는 label의 for랑 input의 id를 일치시킬 것
 
-라디오 버튼은 name이 같아야 제대로 작동함(?)
+  ```html
+      <div>
+        <p>checkbox</p>
+        <input id="html" type="checkbox" name="language" value="html">
+        <label for="html">HTML</label>
+        <input id="python" type="checkbox" name="language" value="python">
+        <label for="python">파이썬</label>
+        <input id="python" type="checkbox" name="language" value="java">
+        <label for="java">자바</label>
+        <hr>
+      </div>
+  ```
 
-체크박스랑 라디오는 서버에 보낼 value 지정해야함(?)
+  
 
 
 
@@ -312,13 +417,129 @@ input 태그가 뭘 하는지 설명해줌?
 
 ##### !!!!!!!!!!!!!!!!!!!
 
-
-
 action : 어디로 보낼지 지정하는 것 when? submit 버튼이 눌렸을 때
 
 method : 요청
 
 name : 키
+
+- 일반적으로 입력을 받기 위해 제공됨. 타입별로 HTML기본 검증 혹은 추가 속성을 활용할 수 있음
+
+- text : 일반 텍스트 입력
+
+- password : 입력 시 값이 보이지 않고 문자를 특수기호(`*`)로 표현
+
+- email : 이메일 형식이 아닌 경우 form 제출 불가
+
+- number : min, max, step 속성을 활용하여 숫자 범위 설정 가능
+
+- file : accept 속성을 활용하여 파일 타입 지정 가능
+
+  ex) 
+
+  ```html
+      <div>
+        <p>file</p>
+        <input type="file">
+        <hr>
+      </div>
+  ```
+
+  
+
+### input 유형 - 항목 중 선택
+
+- 일반적으로 label을 사용하여 내용을 작성하여 항목 중 선택할 수 있는 input을 제공
+- 동일 항목에 대하여는 name을 지정하고 선택된 항목에 대한 value를 지정해야 함
+  - checkbox : 다중 선택
+  - radio : 단일 선택
+
+
+
+### input 유형 - 기타
+
+- 다양한 종류의 input을 위한 picker를 제공
+  - color : color picker
+  - date : date picker
+
+- hidden input을 활용하여 사용자 입력을 받지 않고 서버에 전송되어야 하는 값을 설정
+  - hidden : 사용자에게 보이지 않는 input
+
+
+
+### 마크업 해보기
+
+- `<a>` 속성 중 target
+  - _blank : 새윈도우 창을 열어서 웹페이지 띄움
+  - _self : 현재 윈도우창에 그대로 링크된 웹페이지 띄움
+  - _parent : 현재 프레임의 부모 프레임에서 새 웹페이지 열림
+  - _top : 최상위 프레임에서 열림
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>학생 건강 설문</title>
+</head>
+<body>
+  <!-- header -->
+  <header>
+    <!-- 싸피 홈페이지로 이동하는 링크 -->
+    <a href="edu.ssafy.com" target="_blank">
+      <img src="https://www.ssafy.com/swp/images/sns_img.png" alt="ssafy-logo-image">
+    </a>
+  </header>
+
+  <!-- section -->
+  <section>
+    <!-- 건강 설문 작성 form -->
+    <h1>SSAFY 학생 건강설문</h1>
+    <!-- 아직 서버에 보낼 내용 안배워서 "#"으로 채움(?) -->
+    <form action="#">
+      <!-- 이름 -->
+      <div>
+        <label for="name">이름을 기재해주세요.</label>
+        <input type="text" id="name" autofocus name="name">
+      </div>
+
+      <!-- 지역 -->
+      <div>
+        <label for="region">지역을 선택해주세요.</label>
+        <select name="region" id="region">
+          <option value="서울">서울</option>
+          <option value="대전">대전</option>
+          <option value="광주">광주</option>
+          <option value="구미">구미</option>
+          <option value="부울경">부울경</option>
+          <!-- 선택지에는 있으나 선택하지 못하게 하려면 disabled -->
+          <option value="제주" disabled>제주</option>
+        </select>
+      </div>
+
+      <!-- 체온 -->
+      <div>
+        <!-- 큰 역할 없이 하나의 문단 이룰 때 <p></p> -->
+        <p>오늘의 체온을 선택해주세요.</p>
+        <!-- 기본값으로 먼저 선택되어 있도록 하기 위해 checked -->
+        <input type="radio" id="temp-normal" name="body-heat" value="normal" checked>
+        <label for="temp-normal">37도 미만</label><br>
+        <input type="radio" name="body-heat" id="temp-warning" value="warning">
+        <label for="temp-warning">37도 이상</label>
+      </div>
+      <br>
+      <!-- 전송 -->
+      <input type="submit" value="제출">
+    </form>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    Google 설문지를 통해 비밀번호를 제출하지 마시오.
+  </footer>
+</body>
+</html>
+```
 
 
 
