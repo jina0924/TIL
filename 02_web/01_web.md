@@ -392,9 +392,10 @@ html 태그
 ### input label
 
 - input 태그가 뭘 하는지 설명해줌
-- label을 클릭하여 input 자체의 초점을 맞추거나 활성화 시킬 수 있음
 
-- 체크박스는 label의 for랑 input의 id를 일치시킬 것
+- **label을 클릭하여 input 자체의 초점을 맞추거나 활성화 시킬 수 있음**
+
+  -  label의 for랑 input의 id를 일치시킬 것
 
   ```html
       <div>
@@ -415,8 +416,6 @@ html 태그
 
 ### input 유형 - 일반
 
-##### !!!!!!!!!!!!!!!!!!!
-
 action : 어디로 보낼지 지정하는 것 when? submit 버튼이 눌렸을 때
 
 method : 요청
@@ -425,15 +424,15 @@ name : 키
 
 - 일반적으로 입력을 받기 위해 제공됨. 타입별로 HTML기본 검증 혹은 추가 속성을 활용할 수 있음
 
-- text : 일반 텍스트 입력
+- **text** : 일반 텍스트 입력
 
-- password : 입력 시 값이 보이지 않고 문자를 특수기호(`*`)로 표현
+- **password** : 입력 시 값이 보이지 않고 문자를 특수기호(`*`)로 표현
 
-- email : 이메일 형식이 아닌 경우 form 제출 불가
+- **email** : 이메일 형식이 아닌 경우 form 제출 불가
 
-- number : min, max, step 속성을 활용하여 숫자 범위 설정 가능
+- **number** : min, max, step 속성을 활용하여 숫자 범위 설정 가능
 
-- file : accept 속성을 활용하여 파일 타입 지정 가능
+- **file** : accept 속성을 활용하여 파일 타입 지정 가능
 
   ex) 
 
@@ -451,16 +450,16 @@ name : 키
 
 - 일반적으로 label을 사용하여 내용을 작성하여 항목 중 선택할 수 있는 input을 제공
 - 동일 항목에 대하여는 name을 지정하고 선택된 항목에 대한 value를 지정해야 함
-  - checkbox : 다중 선택
-  - radio : 단일 선택
+  - **checkbox** : 다중 선택
+  - **radio** : 단일 선택
 
 
 
 ### input 유형 - 기타
 
 - 다양한 종류의 input을 위한 picker를 제공
-  - color : color picker
-  - date : date picker
+  - **color** : color picker
+  - **date** : date picker
 
 - hidden input을 활용하여 사용자 입력을 받지 않고 서버에 전송되어야 하는 값을 설정
   - hidden : 사용자에게 보이지 않는 input
@@ -582,28 +581,85 @@ h1 {
 
 - 인라인 태그를 활용하여 작성
 - 내부 참조 - `<style>`
-- 외부 참조 - 분리된 CSS 파일
+- 외부 참조 - 분리된 CSS 파일 -> 자주 씀
 
 
 
 #### CSS 정의 방법 - 1 (인라인)
 
-###### !!!!!!!!!!!!!!!!추가!!!!!!!!!
+해당 태그에 직접 style 속성을 활용
+
+```html
+<body>
+    <h1 style="color: blue; font-size: 100px;">Hello</h1>
+</body>
+```
+
+
+
+
 
 #### CSS 정의 방법 - 2 (내부 참조)
+
+`<head>` 태그 내에 `<style>`에 지정
+
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="checkbox"] {
+      display: inline;
+    }
+    input[type="radio"] {
+      display: inline;
+    }
+  </style>
+</head>
+```
 
 
 
 #### CSS 정의 방법 - 3 (외부 참조) ★ 자주 사용
 
+- 외부 CSS 파일을 `<head>` 내 `<link>`를 통해 불러오기
+
 - 모듈화 가능
   - 폰트사이즈 같은데 색만 다르게 적용하고 싶다면 내부에 폰트만 넣고 외부에 색상 파일 만듦
+
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOX Model Practice</title>
+  <link rel="stylesheet" href="box_model.css">
+</head>
+```
+
+```css
+.big-box {
+  position: relative;
+  margin: 100px auto 500px;
+  border: 5px solid black;
+  width: 500px;
+  height: 500px;
+}
+```
 
 
 
 ### CSS with 개발자 도구
 
+> 크롬 기준) 오른쪽 마우스 → 검사 / ctrl + shift + i
 
+- styles : 해당 요소에 선언된 모든 CSS
+- computed : 해당 요소에 최종 계산된 CSS
 
 
 
@@ -613,17 +669,12 @@ h1 {
 
 - 기본 선택자
   - 전체 선택자, 요소 선택자 (h1, h2, div,...)
-  -  
+  -  클래스 선택자, 아이디 선택자, 속성 선택자
 - 결합자
-  - 자손 결합자
-  - 일반 형제 결합자
+  - 자손 결합자, 자식 결합자
+  - 일반 형제 결합자, 인접 형제 결합자
 - 의사 클래스/요소(Pseudo Class)
   - 가상으로 선택하는 행위? hover
-  -  
-
-
-
-### 선택자 with 개발자 도구
 
 
 
@@ -633,26 +684,62 @@ h1 {
   - HTML 태그를 직접 선택
   - ex) h2, div
 
-- 클래스 선택자
+  ```css
+      /* 여러 요소를 선택하여 변경 가능
+      h3, 
+      h4 {
+        font-size: 10px;
+      } 
+  ```
+
+  
+
+- 클래스 선택자 → 자주 사용
 
   - 여러 요소를 선택하여 변경 가능
-  - 마침표(`.`)문자로 시작. 해당 클래스가 적용된 항목을 선택
+  - **마침표(`.`)문자로 시작**. 해당 클래스가 적용된 항목을 선택
+
+  ```css
+      .green {
+        color: green;
+      }
+  ```
+
+  
 
 - 아이디 선택자
 
-  - `#` 문자로 시작. 해당 아이디가 적용된 항목을 선택
+  - **`#` 문자로 시작**. 해당 아이디가 적용된 항목을 선택
   - 단 한개의 요소만 선택 -> 여러 개도 선택 가능 but. 단일 id 사용 권장
     why? id는 JS에게 양보할 것.
 
-  
+  ```css
+      #purple {
+        color: purple;
+      }
+  ```
 
 - 자식 결합자
 
   - box 클래스 바로 아래 p만 선택
 
+  ```css
+      /* box 클래스 바로 아래 p만 선택 */
+      .box > p {
+        font-size: 30px;
+      }
+  ```
+
 - 자손 결합자
 
   - box 클래스 아래 있으면 다 선택
+
+  ```css
+      /* box 클래스 아래 있으면 다 선택 */
+      .box p {
+        color: blue;
+      }
+  ```
 
 
 
@@ -661,23 +748,95 @@ h1 {
 1. 중요도 (Importance) - 사용시 주의(사실상 안쓰는 걸 권장)
    - `!important`
 2. 우선 순위 (Specificity)
-   - 인라인 > id > class, 속성, pseudo-class > 요소, psedu-element
+   - **인라인 > id > class, 속성, pseudo-class > 요소, psedu-element**
    - 명시적인 순서
 3. CSS 파일 로딩 순서
+
+
+
+#### Quiz
+
+```html
+<p>1</p>
+<p class="blue">2</p>
+<p class="blue green">3</p>
+<p class="green blue">4</p>
+<p id="red" class="blue">5</p>
+<h2 id="red" class="blue">6</h2>
+<p id="red" class="blue" style="color: yellow;">7</p>
+<h2 id="red" class="blue" style="color: yellow;">8</h2>
+```
+
+```css
+h2 {
+    color: darkviolet !important;
+}
+
+p {
+    color: orange;
+}
+
+.blue {
+    color: blue;
+}
+
+.green {
+    color: green;
+}
+
+#red {
+    color: red
+}
+```
+
+1. orange (요소 선택자)
+2.  blue (클래스 선택자)
+3. green
+4. green -> css에서 blue보다 green이 밑에 있으니까 선언된 순서대로(명시도가 같기 때문)
+5.  red (id > class)
+6. darkviolet
+7.  yellow (inline)
+8. darkviolet
+
+
 
 
 
 ### CSS 상속
 
 - 부모 요소의 속성을 자식에게 상속
-- 눈에 보이는 모든 것 상속 가능(?)
 - 상속 되는 것 예시
   - Text 관련 요소
 - 상속 되지 않는 것 예시
   - Box model 관련 요소, position 관련 요소 등
 
+```html
+  <title>Document</title>
+  <style>
+    p {
+      /* 상속됨 */
+      color: red; 
+      /* 상속 안됨 */
+      border: 1px solid black;
+    }
 
-##### !!!!!!!!!!추가추가!!!!!!!!!
+    span {
+      border: 1px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <p>안녕하세요 
+    <span>김싸피</span> 
+    입니다.
+  </p>
+</body>
+</html>
+```
+
+안녕하세요, 김싸피 모두 글자색 red
+
+p에만 border 적용
 
 
 
@@ -693,28 +852,73 @@ h1 {
   - 가변적인 레이아웃에서 자주 사용
 - em
   - (바로 위, 부모 요소에 대한) 상속의 영향을 받음 ex) text
-  - 
+  - 배수 단위. 요소에 지정된 사이즈에 상대적인 사이즈를 가짐
 - rem
+  - (바로 위, 부모 요소에 대한) 상속의 영향을 받지 않음
   - 최상위 요소(html)의 사이즈를 기준으로 배수 단위를 가짐
   - root를 기준으로 함(일반적으로 root는 16px)
+
 - viewport
   - 브라우저에서 보여지는 화면(디바이스 화면)
+
+```html
+  <style>
+    .em {
+      font-size: 1.5em;
+    }
+
+    .rem {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- 크롬 브라우저의 기본 font size는 16px -->
+  <ul class="em">
+    <!-- 36px -->
+    <li class="em">1.5em</li>
+    <!-- 24px -->
+    <li class="rem">1.5rem</li>
+    <li>no class</li>
+  </ul>
+</body>
+```
 
 
 
 ### 색상 단위
 
 - 색상 키워드
+  - 대소문자 구분x
+  - red, blue 와 같이 특정 색을 직접 글자로 나타냄
+
 - RGB 색상
   - rgb(R, G, B) 함수 표기형
 - HSL 색상
+  - 색상, 채도, 명도
+
 - a 는 alpha(투명도)
+
+```css
+p { color: black;}
+p { color: #000;}
+p { color: #000000;}
+p { color: rgb(0, 0, 0);}
+p { color: hsl(120, 100%, 0);}
+p { color: rgba(0, 0, 0, 0.5);}
+p { color: hsla(120, 100%, 0.5);}
+```
+
+모두 black
 
 
 
 ### CSS 문서 표현
 
 - 텍스트
+  - 서체, 서체 스타일
+  - 자간, 단어 간격, 행간, 들여쓰기 등
+
 - 컬러, 배경
 - 기타 HTML 태그별 스타일링
 
@@ -730,7 +934,7 @@ h1 {
   - 바로 아래
 - 일반 형제 결합자 : `~`
   - A의 형제 요소 중 뒤에 있는 B 요소를 모두 선택
-- 인접 형제 결합자
+- 인접 형제 결합자 : `+`
   - **바로 뒤**에 오는 B요소를 선택
 
 
@@ -751,14 +955,29 @@ Inline : content요소 크기에 맞춰 자리 차지함 ex)span => 왼쪽에서
 
 - 모든 HTML 요소는 box 형태로 되어있음
 - 하나의 박스는 네 부분(영역)으로 이루어짐
-  - content : 내용물
-  - padding : 경계선과 내용물의 사이. 이미지, 배경색은 padding까지. 상하좌우 설정 가능
-  - border : 테두리 영역
-  - margin : 외부 여백. 배경색 지정 x. 상하좌우 설정 가능
+  - **content** : 내용물
+  - **padding** : 경계선과 내용물의 사이. 이미지, 배경색은 padding까지. 상하좌우 설정 가능
+  - **border** : 테두리 영역
+  - **margin** : 외부 여백. 배경색 지정 x. 상하좌우 설정 가능
+
+```css
+    .box2 {
+      width: 500px;
+      /* solid border */
+      border: 2px solid black;
+      padding: 20px 30px;
+      /* 상하 -> 0 / 좌우 -> auto ---> block 요소의 가운데 배치  */
+      margin: 0 auto;
+    }
+```
+
+
 
 
 
 #### Box model 구성(margin/padding)
+
+※ 값의 개수에 따라
 
 전부
 
@@ -770,7 +989,39 @@ Inline : content요소 크기에 맞춰 자리 차지함 ex)span => 왼쪽에서
 
 
 
-기본이 content-box -> 눈에 보이는 부분은 border-box니까 이걸로 바꿔서 쓸것(?)
+#### box-sizing
+
+- 기본이 content-box
+  - padding을 제외한 순수 contents 영역만을 box로 지정
+
+∴ 눈에 보이는 부분은 border-box니까 box-sizing을 border-box으로 설정할 것
+
+```css
+    .box {
+      /* public box */
+      /* content-box가 기본 
+        padding & border를 제외한 순수 content 영역만을 너비로 본다.
+      */
+      width: 100px;
+      margin: 10px auto;
+      padding: 20px;
+      border: 1px solid black;
+      color: white;
+      text-align: center;
+      background-color: blueviolet;
+    }
+
+    .box-sizing {
+      margin-top: 50px;
+      /* border box */
+      /* border까지의 영역을 100px로 보겠습니다. */
+      box-sizing: border-box;
+    }
+```
+
+
+
+
 
 
 
@@ -783,12 +1034,17 @@ Inline : content요소 크기에 맞춰 자리 차지함 ex)span => 왼쪽에서
 
 ### 대표적으로 활용되는 display
 
-- display: block
+- display: **block**
+  - 줄 바꿈이 일어나는 요소
+  - 화면 크기 전체의 가로 폭을 차지함
   - 블록 레벨 요소 안에 인라인 레벨 요소가 들어갈 수 있음
-- display: inline
-  - content 너비만큼 가로 폭을 차지한다.
+
+- display: **inline**
+  - 줄 바꿈이 일어나지 않은 행의 일부 요소
+  - content 너비만큼 가로 폭을 차지함
   - **width, height, margin-top, margin-bottom을 지정할 수 없다**
-  - 상하 여백은 line-height로 지정한다
+  - **상하 여백은 line-height로 지정**한다
+
 
 
 
@@ -810,11 +1066,11 @@ Inline : content요소 크기에 맞춰 자리 차지함 ex)span => 왼쪽에서
 
 ### 속성에 따른 수평 정렬
 
-margin-right: auto : 왼쪽 정렬
+margin-right: auto : 왼쪽 정렬 (text-align: left;)
 
+margin-left: auto : 왼쪽 정렬 (text-align: right;)
 
-
-margin-right: auto; margin-left: auto; : 수평정렬
+margin-right: auto; margin-left: auto; : 수평정렬 (text-align: center)
 
 
 
