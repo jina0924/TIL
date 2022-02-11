@@ -192,7 +192,7 @@
   def BubbleSort(a, N):
       for i in range(N-1, 0, -1):		# 범위의 끝 위치
           for j in range(0, i):
-              if a[j] < a[j+1]:
+              if a[j] > a[j+1]:
                   a[j], a[j+1] = a[j+1], a[j]
   ```
 
@@ -236,7 +236,7 @@
 
   COUNTS		1 3 1 1 2	# 0 1 1 1 2 3 4 4
 
-  COUNTS		1 4 5 6 8	# 1까지는 총 4개, 2까지는 총 5개 -> 누적된 개수 나타냄
+  COUNTS		1 4 5 6 8	# 1까지는 총 4개, 2까지는 총 5개 -> 누적된 개수 나타냄(**누적합**)
 
   ```pseudocode
   for i: 1 -> 4		# 저장할 자리 기준(밑의 줄 counts)
