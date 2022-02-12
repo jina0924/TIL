@@ -48,7 +48,7 @@
 
 
 
-## HTML 기본 구조
+## HTML 기본 구조 📝
 
 여는 태그 + 닫는 태그
 
@@ -121,7 +121,7 @@
 
 
 
-### DOM(Document Object Model) 트리 ★
+### DOM(Document Object Model) 트리 ★ 📝
 
 코드가 계층구조를 갖고 있음
 
@@ -129,6 +129,7 @@
 
 - 텍스트 파일인 HTML문서를 브라우저에서 **렌더링** 하기 위한 구조
   - HTML 문서에 대한 모델을 구성함
+  - HTML 문서 내의 각 요소에 접근 / 수정에 필요한 프로퍼티와 메서드를 제공
 
 
 
@@ -182,7 +183,7 @@ ex) `<a href="https://google.com"></a>>`
 
 
 
-### 시맨틱 태그
+### 시맨틱 태그 📝
 
 > semantic : 의미론적인
 
@@ -197,10 +198,10 @@ ex) `<a href="https://google.com"></a>>`
   - **footer** : 마지막 부분
   - 다 div와 동일한 역할을 함
     - div로 적는것보다 SEO 점수 높음 -> why? 내용 구분하기 쉬워서
-- Non semantic 요소는 div, span 등이 있으며(의미 딱히 없음)
+- Non semantic 요소는 div, span 등이 있음(의미 딱히 없음)
 - h1, table 태그들도 시맨틱 태그로 볼 수 있음
 - 개발자 및 사용자 뿐만 아니라 검색엔진 등에 의미 있는 정보의 그룹을 태그로 표현
-- 단순히 구역을 나누는 것 뿐만 아니라 '의미'를 가지는 태그들을 활용하기 위한 노력
+- 단순히 구역을 나누는 것 뿐만 아니라 '**의미**'를 가지는 태그들을 활용하기 위한 노력
 - 요소의 의미가 명확해짐 -> 코드의 가독성↑ & 유지보수 쉬움
 - **검색엔진최적화(SEO)**를 위해서 메타태그, 시맨틱 태그 등을 통한 마크업을 효과적으로 활용해야함
 
@@ -284,7 +285,7 @@ html 태그
 
 
 
-### table
+### table ❌
 
 - table의 각 영역을 명시하기 위해 `<thead><tbody><tfoot>`요소를 활용
   - **thead** : header
@@ -337,7 +338,7 @@ html 태그
 
 
 
-### form★
+### form★ ❌
 
 - `<form>`은 정보(데이터)를 서버에 제출하기 위한 영역
 
@@ -357,7 +358,7 @@ html 태그
 
 
 
-### input
+### input ❌
 
 - 다양한 타입을 가지는 입력 데이터 유형과 위젯이 제공됨
 
@@ -389,7 +390,7 @@ html 태그
     
 
 
-### input label
+#### input label
 
 - input 태그가 뭘 하는지 설명해줌
 
@@ -414,7 +415,7 @@ html 태그
 
 
 
-### input 유형 - 일반
+#### input 유형 - 일반
 
 action : 어디로 보낼지 지정하는 것 when? submit 버튼이 눌렸을 때
 
@@ -446,7 +447,7 @@ name : 키
 
   
 
-### input 유형 - 항목 중 선택
+#### input 유형 - 항목 중 선택
 
 - 일반적으로 label을 사용하여 내용을 작성하여 항목 중 선택할 수 있는 input을 제공
 - 동일 항목에 대하여는 name을 지정하고 선택된 항목에 대한 value를 지정해야 함
@@ -455,7 +456,7 @@ name : 키
 
 
 
-### input 유형 - 기타
+#### input 유형 - 기타
 
 - 다양한 종류의 input을 위한 picker를 제공
   - **color** : color picker
@@ -587,7 +588,7 @@ h1 {
 
 #### CSS 정의 방법 - 1 (인라인)
 
-해당 태그에 직접 style 속성을 활용
+**해당 태그에 직접 style 속성**을 활용
 
 ```html
 <body>
@@ -673,12 +674,14 @@ h1 {
 - 결합자
   - 자손 결합자, 자식 결합자
   - 일반 형제 결합자, 인접 형제 결합자
-- 의사 클래스/요소(Pseudo Class)
+- 의사 클래스/요소(Pseudo Class)    ※ pseudo : 허위의 가짜의
   - 가상으로 선택하는 행위? hover
+  - 링크, 동적 의사 클래스
+  - 구조적 의사 클래스, 기타 의사 클래스, 의사 엘리먼트, 속성 선택자
 
 
 
-### CSS 선택자 정리
+### CSS 선택자 정리 📝
 
 - 요소 선택자
   - HTML 태그를 직접 선택
@@ -743,14 +746,14 @@ h1 {
 
 
 
-### CSS 적용 우선순위
+### CSS 적용 우선순위 📝
 
 1. 중요도 (Importance) - 사용시 주의(사실상 안쓰는 걸 권장)
    - `!important`
 2. 우선 순위 (Specificity)
-   - **인라인 > id > class, 속성, pseudo-class > 요소, psedu-element**
-   - 명시적인 순서
+   - **인라인 > id > class, 속성, pseudo-class > 요소, pseudo-element**
 3. CSS 파일 로딩 순서
+   - 위에서 아래로 적용
 
 
 
@@ -842,7 +845,7 @@ p에만 border 적용
 
 ## CSS 기본 스타일
 
-### 크기 단위
+### 크기 단위 📝
 
 - px(픽셀)
   - 모니터 해상도의 한 화소인 '픽셀' 기준
@@ -860,6 +863,8 @@ p에만 border 적용
 
 - viewport
   - 브라우저에서 보여지는 화면(디바이스 화면)
+  - 디바이스의 viewport를 기준으로 상대적인 사이즈가 결정됨
+  - vw, vh, vmin, vmax
 
 ```html
   <style>
@@ -886,17 +891,15 @@ p에만 border 적용
 
 
 
-### 색상 단위
+### 색상 단위 📝
 
 - 색상 키워드
   - 대소문자 구분x
   - red, blue 와 같이 특정 색을 직접 글자로 나타냄
-
 - RGB 색상
   - rgb(R, G, B) 함수 표기형
 - HSL 색상
   - 색상, 채도, 명도
-
 - a 는 alpha(투명도)
 
 ```css
@@ -939,7 +942,7 @@ p { color: hsla(120, 100%, 0.5);}
 
 
 
-## CSS Box model
+## CSS Box model 📝
 
 모든 요소는 네모(box model)이고,
 
@@ -947,7 +950,7 @@ p { color: hsla(120, 100%, 0.5);}
 
 block은 한 줄을 다 차지함 -> 다음 부분은 밑에 쌓임 ex) div => 위에서 아래로
 
-Inline : content요소 크기에 맞춰 자리 차지함 ex)span => 왼쪽에서 오른쪽으로
+Inline : content요소 크기에 맞춰 자리 차지함 ex) span => 왼쪽에서 오른쪽으로
 
 
 
@@ -979,13 +982,24 @@ Inline : content요소 크기에 맞춰 자리 차지함 ex)span => 왼쪽에서
 
 ※ 값의 개수에 따라
 
-전부
-
-상하/좌우
-
-상/좌우/하
-
-상/우/하/좌(반시계방향)
+```css
+/* 전부 */
+.margin-1 {
+    margin: 10px;
+}
+/* 상하 / 좌우 */
+.margin-2 {
+    margin: 10px 20px;
+}
+/* 상 / 좌우 / 하 */
+.margin-3 {
+    margin: 10px 20px 30px;
+}
+/* 상 / 우 / 하 / 좌 (반시계방향) */
+.margin-4 {
+    margin: 10px 20px 30px 40px;
+}
+```
 
 
 
@@ -1032,7 +1046,7 @@ Inline : content요소 크기에 맞춰 자리 차지함 ex)span => 왼쪽에서
 
 
 
-### 대표적으로 활용되는 display
+### 대표적으로 활용되는 display 📝
 
 - display: **block**
   - 줄 바꿈이 일어나는 요소
@@ -1066,11 +1080,11 @@ Inline : content요소 크기에 맞춰 자리 차지함 ex)span => 왼쪽에서
 
 ### 속성에 따른 수평 정렬
 
-margin-right: auto : 왼쪽 정렬 (text-align: left;)
+`margin-right: auto;` : 왼쪽 정렬 (`text-align: left;`)
 
-margin-left: auto : 왼쪽 정렬 (text-align: right;)
+`margin-left: auto;` : 왼쪽 정렬 (`text-align: right;`)
 
-margin-right: auto; margin-left: auto; : 수평정렬 (text-align: center)
+`margin-right: auto; margin-left: auto;` : 수평정렬 (`text-align: center`)
 
 
 
@@ -1082,15 +1096,15 @@ inline의 기본 너비는 컨텐츠 영역만큼 -> 너비, 높이, margin-top,
 
 ### display
 
-- display: inline-block
+- `display: inline-block`
   - inline처럼 한 줄에 표시 가능하고, block처럼 width, height, margin 속성을 모두 지정할 수 있음
-- display: none
+- `display: none`
   - 해당 요소를 화면에 표시하지 않고, 공간조차 부여되지 않음
-  - visibility: hidden은 해당 요소가 공간은 차지하나 화면에 표시만 하지 않는다
+  - 이와 비슷한 visibility: hidden은 해당 요소가 공간은 차지하나 화면에 표시만 하지 않는다
 
 
 
-## CSS Position
+## CSS Position 📝
 
 - 문서 상에서 요소의 위치를 지정
 - static : 모든 태그의 기본 값
@@ -1100,6 +1114,7 @@ inline의 기본 너비는 컨텐츠 영역만큼 -> 너비, 높이, margin-top,
 - relative : 상대 위치
   - 자기 자신의 static 위치를 기준으로 이동(normal flow 유지)
   - 외출 -> 나머지 요소는 원래 자리 유지함
+  - 레이아웃에서 요소가 차지하는 공간은 static 일 때와 같음 (normal position 대비 offset)
 - absolute : 절대 위치
   - normal flow에서 벗어남
   - static이 아닌 가장 가까이 있는 부모/조상 요소를 기준으로 이동(없는 경우 body)
@@ -1114,7 +1129,7 @@ inline의 기본 너비는 컨텐츠 영역만큼 -> 너비, 높이, margin-top,
 
 
 
-### CSS 원칙 ★
+### CSS 원칙 ★ 📝
 
 - CSS 원칙 Ⅰ,Ⅱ : Normal flow
   - 모든 요소는 네모(박스모델), 좌측상단에 배치
