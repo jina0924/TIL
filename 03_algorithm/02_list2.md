@@ -200,7 +200,7 @@
 
   ```python
   bit = [0, 0, 0, 0]
-  for i in range(@):
+  for i in range(2):
       bit[0] = i						# 0번째 원소
       for j in range(2):
           bit[1] = j					# 1번째 원소
@@ -297,6 +297,20 @@
   	if i < n: return i
   	else: return -1
   ```
+  
+  ```python
+  def unordered_sequential_search(numbers, target):
+      pos = 0		# position
+      found = False		# flag 변수
+      while pos < len(numbers) and not found:
+          if numbers[pos] == target:
+              found = True
+          else:
+              pos += 1
+      return found
+  ```
+  
+  
 
 
 
@@ -323,6 +337,23 @@
   	else:
   		return -1
   ```
+  
+  ```python
+  def ordered_sequential_search(numbers, target):
+      pos = 0
+      found = False
+      stop = False
+      while pos < len(numbers) and not found and not stop:
+          if numbers[pos] == target:
+              found = True
+          else:
+              if numbers[pos] > target:
+                  stop = True
+              else:
+                  ????
+  ```
+  
+  
 
 
 
@@ -356,9 +387,9 @@
           middle = (start + end) // 2
           if a[middle] == key:
               return True
-          elif a[middle] > key:
+          elif a[middle] < key:	# 살펴본 중앙값이 key보다 작다면
               end = middle - 1
-          else:
+          else:					# 살펴본 중앙값이 key보다 크다면
               start = middle + 1
       return False
   ```
@@ -367,6 +398,8 @@
 
 - 재귀 함수 이용
 
+  - 재귀함수에서 중요한 것 : base case(언제 종료할 것인가)
+  
   ```python
   def binarySearch2(a, low, high, key):
       if low > high:
@@ -380,8 +413,18 @@
           elif a[middle] < key:
               return binarySearch2(a, middle+1, high, key)
   ```
-
   
+  ```python
+  def recursive_binary_search(numbers: list, target: int):
+      if len(numbers) == 0:
+          return False
+      med = len(numbers) // 2
+      if numbers[mid] == target:
+          return True
+      if target < numbers[mid]:
+          return recursive_binary_search(numbers[:mid], target)
+      else:
+          return recursive_binary_search(numbers[mid+1:], target)
 
 
 
@@ -389,7 +432,7 @@
 
 ### 인덱스
 
-- Database 분야가 아닌 곳에서는 Look up table등의 용오를 사용하기도 함
+- Database 분야가 아닌 곳에서는 Look up table등의 용어를 사용하기도 함
 - 배열을 사용한 인덱스
   - 대량의 데이터를 매번 정렬하면, 프로그램의 반응 느려짐
     -> 대량 데이터의 성능 저하 문제를 해결하기 위해 배열 인덱스를 사용
@@ -418,10 +461,10 @@
   ```python
   def selectionSort(a, N):
       for i in range(N-1):
-          minIdx = i
+          minIdx = i					# 임의로 잡아둔 최소값의 인덱스
           for j in range(i+1, N):		# 구간의 시작이 하나씩 늘어남
               if a[minIdx] > a[j]:
-                  minIdx = j
+                  minIdx = j			# 더 작은 값 찾으면 인덱스 바꾸기
           a[i], a[minIdx] = a[minIdx], a[i]
   ```
 
