@@ -995,7 +995,7 @@ Inline : content요소 크기에 맞춰 자리 차지함 ex) span => 왼쪽에�
 .margin-3 {
     margin: 10px 20px 30px;
 }
-/* 상 / 우 / 하 / 좌 (반시계방향) */
+/* 상 / 우 / 하 / 좌 (시계방향) */
 .margin-4 {
     margin: 10px 20px 30px 40px;
 }
