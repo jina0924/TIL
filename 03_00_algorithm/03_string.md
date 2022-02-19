@@ -152,8 +152,6 @@
 
 
 
-#### !!!!!!!!!!!!!!!!!!!!!
-
 - C와 Java의 String 처리의 기본적인 차이점
 
   - c는 아스키 코드로 저장
@@ -165,7 +163,9 @@
 
     
 
-  - java는 유니코드(UTF16, 2byte)로 저장
+  - Java는 유니코드(UTF16, 2byte)로 저장
+  
+  - Python은 유니코드(UTF8)로 저장
 
 
 
@@ -177,7 +177,7 @@
 
 
 
-- ㄴㅇㄹ
+- 뒤집는 방법
   - s = s[::-1]
   - s.reverse()    # string에서는 동작 안함
 
@@ -240,7 +240,7 @@
     print(a>b)		# False
     print(a<c)		# True
     print(a>c)		# False
-    print(d<d)		# False
+    print(a<d)		# False
     print(a==d)		# False
     ```
 
