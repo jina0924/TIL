@@ -349,8 +349,10 @@
           else:
               if numbers[pos] > target:
                   stop = True
+                  return found
               else:
-                  ????
+                  pos += 1
+      return found
   ```
   
   
