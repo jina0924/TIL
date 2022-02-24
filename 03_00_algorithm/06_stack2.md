@@ -22,6 +22,8 @@ DFS(깊이우선탐색) Depth First Search : 그래프를 하나도 빠짐없이
 
 ### DFS(깊이우선탐색)
 
+- 깊이 : 시작 지점에서 가볼 수 있을 때까지 끝까지 가보는 것
+
 - 그래프 구조(비선형구조) -> 그래프로 표현된 모든 자료를 빠짐없이 검색하는 것이 중요
 - 두 가지 방법
   - 깊이 우선 탐색(Depth First Search, DFS)
@@ -182,7 +184,7 @@ end DFS()
 
 - 일반 백트래킹 알고리즘 (N-Queen)
 
-  ```python
+  ```pseudocode
   def checknode(v):	# node
       if promising(v):	# 놓을 수 있는지 없는지 확인
           if there is a solution at v:
@@ -449,7 +451,7 @@ end DFS()
 - 거듭 제곱 : O(n)
 
   ```python
-  def poser(base, exponent):
+  def power(base, exponent):
       if base == 0:
           return 1
       result = 1	# base^0은 1이므로
