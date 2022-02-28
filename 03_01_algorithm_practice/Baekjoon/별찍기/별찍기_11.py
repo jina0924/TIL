@@ -7,9 +7,9 @@ def triangle_star(r, c, n):
         for i in range(-2, 3):
             matrix[r+2][c+i] = '*'
         return
-    triangle_star(0, N-1, n//2)
-    triangle_star(n//2, n//2-1, n//2)
-    triangle_star(n//2, 2*n - n//2 -1, n//2)
+    triangle_star(r, c, n//2)
+    triangle_star(r + n//2, c - n//2, n//2)
+    triangle_star(r + n//2, c + n//2, n//2)
 
 N = int(input())
 matrix = [[' ' for _ in range(2*N-1)] for _ in range(N)]
