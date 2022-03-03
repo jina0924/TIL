@@ -537,6 +537,7 @@ TEMPLATES = [
 
 - 'DIRS': [BASE_DIR / 'templates',], 추가
 - 시작점을 최상단 폴더에 잡아줌
+- BASE_DIR : 제일 상단 폴더
 
 
 
@@ -637,9 +638,52 @@ TEMPLATES = [
 
 
 
-## HTML Form
+## HTML Form ★
+
+### HTML "form" element
+
+- 웹에서 사용자 정보를 입력하는 여러 방식
+- 핵심 속성(attribute)
+  - action : 입력 데이터가 전송될 URL 지정(어디로 보낼건지)
+  - method : 입력 데이터 전달 방식 지정
+    - 기본값 : GET
 
 
+
+### HTML "input" element
+
+- 사용자로부터 데이터를 입력 받기 위해 사용
+- type 속성에 따라 동작 방식이 달라짐
+- 핵심 속성
+  - name
+  - name은 key, value는 value로 매핑
+  - GET 방식에서는 URL에서 ?key=value&key=value 형식으로 데이터 전달
+
+
+
+### HTML "label" element
+
+- label을 input 요소와 연결하기
+  1. input에 id 속성 부여
+  2. label에는 input의 id와 동일한 값의 for 속성이 필요
+- label과 input 요소 연결의 주요 이점
+  - 시각적인 기능 뿐만 아니라 화면 리더기에서 label을 읽어 사용자가 입력해야 하는 텍스트가 무엇인지 더 쉽게 이해할 수 있도록 돕는 프로그래밍적 이점도 있음
+
+
+
+### HTTP
+
+- HpyerText Transfer Protocol
+  - 하이퍼 텍스트를 주고받는 규약
+
+- 웹에서 이루어지는 모든 데이터 교환의 기초
+- 주어진 리소스가 수행할 작업을 나타내는 request methods를 정의
+- HTTP request method 종류
+  - GET, POST, PUL, DELETE, ... => CRUD
+
+
+
+#### HTTP request method - 'GET'
 
 
 
@@ -647,3 +691,7 @@ TEMPLATES = [
 
 ## URL
 
+### Variable Routing
+
+- URL 주소를 변수로 사용하는 것
+- URL의 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음
