@@ -648,6 +648,17 @@ TEMPLATES = [
   - method : 입력 데이터 전달 방식 지정
     - 기본값 : GET
 
+```django
+{% comment %} 
+  action -> 어디로 공을 던질지!
+  method -> 어떤 방식으로 던질지(단순 조회가 GET)
+{% endcomment %}
+<form action="/articles/catch/" method="GET">
+  <input type="text" name="ball">
+  <input type="submit" value="공을 던지자!">
+</form>
+```
+
 
 
 ### HTML "input" element
@@ -655,19 +666,62 @@ TEMPLATES = [
 - 사용자로부터 데이터를 입력 받기 위해 사용
 - type 속성에 따라 동작 방식이 달라짐
 - 핵심 속성
-  - name
-  - name은 key, value는 value로 매핑
-  - GET 방식에서는 URL에서 ?key=value&key=value 형식으로 데이터 전달
+  - **name**
+  - 중복 가능, 양식을 제출했을 때 name이라는 이름에 설정된 값을 넘겨서 값을 가져올 수 있음
+  - 주요 용도는 GET/POST 방식 -> 서버에 전달하는 파라미터(name은 key, value는 value)로 매핑하는 것
+  - GET 방식에서는 URL에서 `?key=value&key=value` 형식으로 데이터 전달
+
+```django
+<form action="/articles/catch/" method="GET">
+  {% comment %} 
+    name -> 어떤 박스에 담아서 던지지 결정!
+    name의 값은 박스의 이름을 의미한다!  
+  {% endcomment %}
+  <input type="text" name="ball">
+  <input type="submit" value="공을 던지자!">
+</form>
+```
 
 
 
 ### HTML "label" element
+
+- 사용자 인터페이스 항목에 대한 설명(caption)을 나타냄
 
 - label을 input 요소와 연결하기
   1. input에 id 속성 부여
   2. label에는 input의 id와 동일한 값의 for 속성이 필요
 - label과 input 요소 연결의 주요 이점
   - 시각적인 기능 뿐만 아니라 화면 리더기에서 label을 읽어 사용자가 입력해야 하는 텍스트가 무엇인지 더 쉽게 이해할 수 있도록 돕는 프로그래밍적 이점도 있음
+  - label을 클릭해서 input에 초점(focus)를 맞추거나 활성화(activate)시킬 수 있음
+
+
+
+### HTML "for" attribute
+
+- for 속성의 값과 일치하는 id를 가진 문서의 첫 번째 요소를 제어
+  - 연결된 요소가 labelable elements인 경우 이 요소에 대한 labeled control이 됨
+- labelable elements
+  - label 요소와 연결할 수 있는 요소
+  - button, input(not hidden type), select, textarea, ...
+
+```django
+{% block content %}
+  <h1>Throw</h1>
+  <form action="#" method="#">
+      <label for="message">Throw</label>
+      <input type="text" id="message" name="message">
+      <input type="submit">      
+  </form>
+```
+
+
+
+### HTML "id" attribute
+
+- 전체 문서에서 고유해야 하는 식별자를 정의
+- 사용 목적
+  - linking, scripting, styling 시 요소를 식별
 
 
 
@@ -685,7 +739,9 @@ TEMPLATES = [
 
 #### HTTP request method - 'GET'
 
-
+- 서버로부터 정보를 조회하는데 사용
+- 데이터를 가져올 때만 사용해야함
+- 데이터를 서버로 전송할 때 Query String Parameters를 통해 전송
 
 
 
@@ -694,4 +750,40 @@ TEMPLATES = [
 ### Variable Routing
 
 - URL 주소를 변수로 사용하는 것
+
 - URL의 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음
+
+- 변수 값에 따라 하나의 path()에 여러 페이지 연결 가능
+
+  ex) `path('accounts/user/<int:user_pk>/', ...)`
+
+  		- accounts/user/1
+  		- accounts/user/2
+
+
+
+### URL Path converters
+
+- str
+
+  - `/`를 제외하고 비어 있지 않은 모든 문자열과 매치
+  - 작성하지 않을 경우 기본 값
+
+- int
+
+  - 0 또는 양의 정수와 매치
+
+- slug
+
+  - ASCII 문자 또는 숫자, 하이픈 및 밑줄 문자로 구성된 모든 슬러그 문자열과 매치
+
+    ex) 'building-your-1st-django-site'
+
+- uuid
+- path
+
+```python
+    path('hello/<str:name>/<name2>/', views.hello, name='hello'),    
+    path('food/<name>/<int:num>/', views.food, name='food'),
+```
+
