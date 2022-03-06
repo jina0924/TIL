@@ -22,8 +22,8 @@ sys.stdin = open('input.txt')
 T = int(input())
 
 for tc in range(1, T+1):
-    n, m = map(int, input().split())
+    n, m = map(int, input().split())    # n: 행의 크기, m: 열의 크기
     # 인덱스 접근 쉽게하기 위해 사방에 0으로 패딩 주기
     maze = [[0]*(m+2)] + [[0] + list(map(int, input())) + [0] for _ in range(n)] + [[0]*(m+2)]
-    ans = escape(1, 1)
+    ans = escape(1, 1)  # (1, 1)에서 시작
     print(ans)
