@@ -1,6 +1,6 @@
 # 백준 1012번 유기농 배추
 
-def worm(r, c, m, n):
+def worm(r, c):
     global cnt                              # 전역에 있는 지렁이 마리 수 변경할 예정
     queue[0][0], queue[0][1] = r, c         # queue 맨 앞에 매개변수 r, c 할당
     farm[r][c] = 5                          # 5 = 해당 배추를 살펴봤다는 의미
@@ -38,6 +38,6 @@ for tc in range(1, T+1):
     for r in range(n):
         for c in range(m):
             if farm[r][c] == 1:             # 만약 해당 행렬의 요소가 배추라면
-                worm(r, c, m, n)            # 지렁이 배치하러 감
+                worm(r, c)            # 지렁이 배치하러 감
 
     print('{}'.format(cnt))

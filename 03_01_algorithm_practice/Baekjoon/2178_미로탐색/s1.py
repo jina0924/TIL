@@ -10,7 +10,8 @@ def escape(r, c):
         for i in range(4):
             nr = r + dr[i]
             nc = c + dc[i]
-            if 0 < nr <= n and 0 < nc <= m and maze[nr][nc] == 1:   # 값이 1이다 = 길이지만 아직 들르지 않았다
+            # if 0 < nr <= n and 0 < nc <= m and maze[nr][nc] == 1:   # 값이 1이다 = 길이지만 아직 들르지 않았다
+            if maze[nr][nc] == 1:
                 maze[nr][nc] = 1 + maze[r][c]   # 이동한 칸 수를 해당 칸에 입력해줌
                 queue.append((nr, nc))
 
