@@ -370,6 +370,85 @@ ex) `Article.objects.all()`
 
 - delete()
   - 모든 행에 대해 SQL 삭제 쿼리 수행하고, 삭제된 객체 수와 객체 유형당 삭제 수가 포함된 딕셔너리를 반환
+  
+  ```python
+  # articles/urls.py
+  
+  from django.urls import path
+  from . import views
+  
+  app_name = 'articles'
+  
+  urlpatterns = [
+      # articles/
+      path('', views.index, name='index'),
+      # articles/new/ -> throw
+      path('new/', views.new, name='new'),
+      # articles/create/ -> catch
+      path('create/', views.create, name='create'),
+      # articles/2/ & articles/3/ & articles/4/....
+      path('<int:article_pk>/', views.detail, name='detail'),
+      # delete
+      path('<int:article_pk>/delete/', views.delete, name='delete'),
+  ]
+  ```
+  
+  ```python
+  # articles/views.py
+  
+  def delete(request, article_pk):
+      # 1. DB에서 삭제하고자 하는 글 가져옴
+      article = Article.objects.get(pk=article_pk)
+      # 2. 글을 삭제한다
+      article.delete()
+      # 3. 삭제 이후 index 페이지로
+      return redirect('articles:index')
+  ```
+  
+  ```django
+  {% comment %} articles/templates/articles/detail.html {% endcomment %}
+  
+  {% extends 'base.html' %}
+  {% load humanize %}
+  
+  {% block content %}
+    <h2>여기는 DETAIL 페이지입니다.</h2>
+    <p>게시글 내용: {{ article.content }}</p>
+    <p>게시글 작성 시각: {{ article.created_at|naturaltime }}</p>
+    <p>게시글 수정 시각: {{ article.updated_at|naturaltime }}</p>
+    <a href="{% url 'articles:delete' article.pk %}">[글 삭제]</a>
+    <a href="{% url 'articles:index' %}">[인덱스 페이지로 가자]</a>
+  {% endblock content %}
+  ```
+  
+  but. a 태그는 GET 요청밖에 못함 -> 주소창을 통해서도 게시글이 삭제 됨
+  
+  ↓ 해결 방법(HTTP Method POST 시에만 삭제될 수 있도록)
+  
+  ```python
+  # articles/views.py
+  
+  def delete(request, article_pk):
+      # 요청이 POST인지 검증
+      if request.method == 'POST':
+          # 1. DB에서 삭제하고자 하는 글 가져옴
+          article = Article.objects.get(pk=article_pk)
+          # 2. 글을 삭제한다
+          article.delete()
+          # 3. 삭제 이후 index 페이지로
+          return redirect('articles:index')
+      # 요청이 POST가 아니라면 현재 페이지에 머물게 함
+      return redirect('articles:detail', article_pk)
+  ```
+  
+  ```django
+    <form action="{% url 'articles:delete' article.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="글 삭제">
+    </form>
+  ```
+  
+  
 
 
 
@@ -496,7 +575,7 @@ admin.site.register(Article, ArticleAdmin)
 
 - value는 Django에서 생성한 hash 값으로 설정됨
 
-- 해당 태그 없이 요청 보낸다면 Django 서버는 403 에서 응답
+- 해당 태그 없이 요청 보낸다면 Django 서버는 403 forbidden을 응답
 
   ```django
   {% extends 'base.html' %}
@@ -539,4 +618,48 @@ def create(request):
 
 
 ### DETAIL
+
+```python
+# articles/urls.py
+    ...
+    # Variable Routing
+    path('<int:article_pk>/', views.detail, name='detail'),
+```
+
+```python
+# articles/views.py
+
+# 매개변수로 pk를 넘겨줌
+def detail(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
+    context = {
+        'article': article,
+    }
+    return render(request, 'articles/detail.html', context)
+```
+
+```django
+<!-- articles/templates/articles/detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container m-2">
+    <h1 class='fw-bold'>DETAIL</h1>
+    <br>
+    <h3>{{ article.title }}</h3>
+    <p>{{ article.content }}</p>
+    <p>작성일: {{ article.created_at }}</p>
+    <p>수정일: {{ article.updated_at }}</p>
+    <a href="{% url 'articles:edit' article.pk %}">EDIT</a>
+    <form action="{% url 'articles:delete' article.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="DELETE">
+    </form>
+    <br>
+    <a href="{% url 'articles:index' %}">BACK</a>
+  </div>
+{% endblock content %}
+```
+
+
 
