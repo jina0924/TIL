@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>안녕하세요. 저는 {{ info.name }} 입니다.</p>
+<p>제가 좋아하는 음식은 {{ foods }} 입니다.</p>
+<p>그 중 가장 좋아하는 음식은 {{ foods.2 }} 입니다.</p>
+
+<a href="{% url 'index' %}">뒤로</a>
+{% endblock content %}
