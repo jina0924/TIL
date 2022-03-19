@@ -52,8 +52,6 @@
 
 ## ORM
 
-### ORM
-
 - Object-Relational-Mapping
 - 객체 지향 프로그래밍 언어를 사용하여 호환되지 않는 유형의 시스템 간에(Django - SQL) 데이터를 변환하는 프로그래밍 기술
 - OOP 프로그래밍에서 RDBMS을 연동할 때, 데이터베이스
@@ -99,11 +97,11 @@ class Article(models.Model):
 
 ### 사용 모델 필드
 
-- CharField(max_length=None, **options)
+- **CharField(max_length=None, **options)**
   - 길이의 제한이 있는 문자열을 넣을 때 사용
   - max_length는 필수 인자
   - 필드의 최대 길이(문자), 데이터베이스 레벨과 Django의 유효성 검사에서 활용
-- TextField(**options)
+- **TextField(**options)**
   - 글자의 수가 많을 때 사용
 
 
@@ -171,10 +169,14 @@ class Article(models.Model):
 
 ### DateField's options
 
+> DateTimeField는 DateField의 서브 클래스
+
 - auto_now_add
   - 최초 생성 일자
+  - Django ORM이 최초 insert할 때만 현재 날짜와 시간으로 갱신
 - auto_now
   - 최종 수정 일자
+  - Django ORM이 save 할 때마다 현재 날짜와 시간으로 갱신
 
 
 
