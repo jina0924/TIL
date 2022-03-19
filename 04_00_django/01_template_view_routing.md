@@ -856,20 +856,22 @@ TEMPLATES = [
 
 ## Namespace
 
-- 문제점
+> 개체를 구분할 수 있는 범위를 나타내는 namespace
 
-  1. articles 앱의 index 페이지에서 두번째 앱 pages의 index로 이동하는 하이퍼링크를 클릭 시 현재 페이지로 이동됨
-     - URL namespace
+- 위에서 제시된 대로 만들었을 때 문제점
 
-  2. pages 앱 index url로 이동해도 articles 앱의 index페이지가 출력됨
-     - Template namespace
+1. articles 앱의 index 페이지에서 두번째 앱 pages의 index로 이동하는 하이퍼링크를 클릭 시 현재 페이지로 이동됨
+   - URL namespace
+
+2. pages 앱 index url로 이동해도 articles 앱의 index페이지가 출력됨
+   - Template namespace
 
 
 
 
 ↓ 해결방법
 
-### namespace(이름공간)
+### URL namespace(이름공간)
 
 1. 서로 다른 app의 같은 이름을 가진 url name은 이름공간을 설정해서 구분
 2. templages, static 등 django는 정해진 경로 하나로 모아서 보기 때문에 중간에 폴더를 임의로 만들어 줌으로써 이름공간을 설정
@@ -955,10 +957,25 @@ urlpatterns = [
 
 ### Tmeplate namespace
 
-- 추가경로 지정
-  - return render(request, 'articles/index.html')
+- Django는 기본적으로 `app_name/templates/` 경로에 있는 templates 파일들만 찾을 수 있음
 
-- 앱이름/tempalte/앱이름/ 으로 폴더 구조 변경 및 템플릿 경로 재작성
+- INSTALLED_APPS에 작성한 app순서대로 template을 검색 후 렌더링
+
+- 임의로 templates의 폴더 구조를 `app_name/templates/app_name` 형태로 변경해 임의로 이름 공간 생성 후 변경된 추가 경로 작성
+
+  ```python
+  # articles/views.py
+  
+  return render(request, 'articles.index.html')
+  ```
+
+  ```python
+  # pages/view.py
+  
+  return render(request, 'pages/index.html')
+  ```
+
+  
 
 
 
