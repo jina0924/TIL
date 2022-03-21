@@ -189,7 +189,7 @@ $ python manage.py runserver
 
 - 순서
   1. 가상환경 생성 및 활성화
-  2. djaogo 설치
+  2. django 설치
   3. 프로젝트 생성
   4. 서버켜서 로켓 확인
   4. 앱 생성
@@ -966,7 +966,7 @@ urlpatterns = [
   ```python
   # articles/views.py
   
-  return render(request, 'articles.index.html')
+  return render(request, 'articles/index.html')
   ```
 
   ```python
