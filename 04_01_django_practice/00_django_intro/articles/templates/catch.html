@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-  <h1>Catch</h1>
-  <h3>여기서 {{ message }}을 받음!</h3>
-  {% comment %} <a href="/throw/">다시 던지러 go</a> {% endcomment %}
-  <a href="{% url 'throw' %}">다시 던지러 go</a>
-{% endblock content %}
