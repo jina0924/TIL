@@ -80,7 +80,7 @@ HTTP 응답 코드
   2. require_POST()
      - view 함수가 POST method 요청만 승인하도록 하는 데코레이터 -> delete에서 필요
   3. require_safe()
-     - view 함수가 GET 및 HEAD method만 허용하도록 요구하는 데코레이터 -> index, detail
+     - view 함수가 GET 및 HEAD method만 허용하도록 요구하는 데코레이터(조회만 가능) -> index, detail
 
   ```python
   # articles/views.py
@@ -382,5 +382,4 @@ class Article(models.Model):
         format='JPEG',
         options={'quality': 90})
 ```
-
 

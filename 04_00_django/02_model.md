@@ -95,11 +95,11 @@ class Article(models.Model):
 
 ### 사용 모델 필드
 
-- **CharField(max_length=None, **options)**
+- **CharField(max_length=None,** **options)
   - 길이의 제한이 있는 문자열을 넣을 때 사용
   - max_length는 필수 인자
   - 필드의 최대 길이(문자), 데이터베이스 레벨과 Django의 유효성 검사에서 활용
-- **TextField(**options)**
+- **TextField(** **options)
   - 글자의 수가 많을 때 사용
 
 

@@ -658,7 +658,7 @@ User = get_user_model()
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
-        moedl = User    # 현재 활성화된 유저 정보를 반환
+        model = User    # 현재 활성화된 유저 정보를 반환
         fields = ('email', 'first_name', 'last_name',)
 ```
 

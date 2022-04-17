@@ -174,18 +174,18 @@ SELECT * FROM example;
 
 
 
-#### 테이블 생성 및 삭제 statement
+### 테이블 생성 및 삭제 statement
 
-- creage table
+#### CREATE
 
-  ```sql
-  CREATE TABLE classmates (
-    id INTERGER PRIMARY KEY,
-    name TEXT
-  );
-  ```
+```sql
+CREATE TABLE classmates (
+  id INTERGER PRIMARY KEY,
+  name TEXT
+);
+```
 
-  드래그 -> run selected query
+드래그 -> run selected query
 
 
 
@@ -196,6 +196,8 @@ DROP TABLE classmates;
 ```
 
 
+
+### CRUD
 
 #### CREATE
 
@@ -379,7 +381,7 @@ DROP TABLE classmates;
 | C    | INSERT | INSERT INTO 테이블이름 ... VALUES ...; |
 | R    | SELECT | SELECT * FROM 테이블이름 WHERE 조건;   |
 | U    | UPDATE | UPDATE 테이블이름 SET ... WHERE 조건;  |
-| D    | DELETE | DELETE FROM 테이블이름 WHERE 조거니    |
+| D    | DELETE | DELETE FROM 테이블이름 WHERE 조건      |
 
 - 테이블 생성 : CREATE
 - 테이블 삭제 : DROP
