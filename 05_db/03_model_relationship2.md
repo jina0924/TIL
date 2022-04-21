@@ -550,4 +550,47 @@ class Article(models.Model):
   ...
   ```
 
+
+
+
+### 검색 기능
+
+- url
+
+  ```python
+  app_name = 'articles'
+  urlpatterns = [
+      ...
+      path('search/', views.search, name='search'),
+  ```
+
+- views
+
+  ```python
+  def search(request):
+      #1. 사용자가 입력한 검색어 받아와야 함
+      keyword = request.GET.get('keyword')
+      #2. 해당 검색어를 통해 DB에 일치하는 데이터가 있는지 확인하고 불러옴
+      # 게시글의 제목 혹은 내용에 'keyword'가 있는지를 확인
+      results = Article.objects.filter(
+          Q(title__icontains=keyword) | Q(content__icontains=keyword)
+      )
+      context = {
+          'results': results,
+      }
+      return render(request, 'articles/search_result.html', context)
+  ```
+
+- template
+
+  ```django
+  {# articles/index.html #}
+  
+    <form action="{% url 'articles:search' %}" method="GET">
+      <label for="search">검색어: </label>
+      <input type="text" name="keyword" id="search">
+      <input type="submit" value="검색해주세요.">
+    </form>
+  ```
+
   
