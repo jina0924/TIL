@@ -13,6 +13,12 @@
 
 ### Browser
 
+- URL로 웹(WWW)을 탐색하며 서버와 통신
+- HTML 문서나 파일을 출력하는 GUI 기반의 소프트웨어
+- 인터넷의 컨텐츠를 검색 및 열람하도록 함
+
+
+
 **브라우저에서 할 수 있는 일**
 
 - DOM (Document Object Model) 조작
@@ -29,6 +35,13 @@
 
 - HTML, XML과 같은 문서를 다루기 위한 프로그래밍 인터페이스
 - 문서를 구조화하고, 구조화된 구성 요소를 하나의 객체로 취급하여 다루는 논리적 트리 모델
+- 문서가 객체로 구조화되어 있음.
+- key로 접근 가능
+- 주요 객체
+  - window : DOM을 표현하는 창(브라우저 탭). 최상위 객체
+  - document : 페이지 컨텐츠의 Entry Point 역할
+  - navigator, location, history, screen
+
 
 
 
@@ -56,6 +69,8 @@
 
 - 자바스크립트는 세미콜론을 선택적으로 사용 가능
 - 세미콜론이 없으면 ASI에 의해 자동으로 세미콜론이 삽입됨
+  - ASI : Automatic Semicolon Insertion
+
 
 
 
@@ -127,36 +142,34 @@ let bar = 0			// 선언 + 할당
 console.log(bar)	// 0
 ```
 
-- 선언
+- 선언 (Declaration)
   - 변수를 생성하는 행위 또는 시점
 
-- 할당
+- 할당 (Assignment)
   - 선언된 변수에 값을 저장하는 행위 또는 시점
 
-- 초기화
+- 초기화 (Initialization)
   - 선언된 변수에 처음으로 값을 저장하는 행위 또는 시점
 
 
 
+**블록 스코프* (block scope)**
 
-변수 선언 키워드 (**let**, **const**)
+- if, for, 함수 등 **중괄호 내부**를 가리킴
+- 블록 스코프를 가지는 변수는 **블록 바깥에서 접근 불가능**
 
-- 블록 스코프* (block scope)
-  - if, for, 함수 등 **중괄호 내부**를 가리킴
-  - 블록 스코프를 가지는 변수는 블록 바깥에서 접근 불가능
-  
-  ```js
-  let x = 1
-  
-  if (x===1) {
-      let x = 2
-      console.log(x)	// 2
-  }
-  
-  console.log(x)		// 1
-  ```
-  
-  
+```js
+let x = 1
+
+if (x===1) {
+    let x = 2
+    console.log(x)	// 2
+}
+
+console.log(x)		// 1
+```
+
+
 
 변수 선언 키워드 - **var**
 
@@ -166,9 +179,9 @@ console.log(bar)	// 0
   - ES6 이전에 변수를 선언할 때 사용되던 키워드
     - ES6 이후부터는 var 대신 const와 let을 사용하는 것을 권장
     
-  - **호이스팅** 되는 특정으로 인해 예기치 못한 문제 발생 가능
+  - **호이스팅** (hoisting) 되는 특정으로 인해 예기치 못한 문제 발생 가능
     
-    - hoist : 감아올리다 -> 변수를 선언 이전에 참조할 수 있는 현상
+    - hoist : 감아올리다
     - 변수를 선언 이전에 참조할 수 있는 현상
     - 변수 선언 이전의 위치에서 접근 시 undefined를 반환
     
@@ -198,14 +211,14 @@ console.log(bar)	// 0
 
 
 
-[참고] 원시 타입과 참조 타입 비교
+**[참고] 원시 타입과 참조 타입 비교**
 
-- 원시 타입 (Primitive type)
+- **원시 타입 (Primitive type)**
   - 객체(objects)가 아닌 기본 타입
   - Number, String, Boolean, undefined, null, Symbol
   - 변수에 해당 타입의 값이 담김
   - 다른 변수에 복사할 때 실제 값이 복사됨
-- 참조 타입 (Reference type)
+- **참조 타입 (Reference type)**
   - 객체 타입의 자료형
   - 변수에 해당 객체의 참조 값이 담김
   - 다른 변수에 복사할 때 참조 값이 복사됨
@@ -214,11 +227,11 @@ console.log(bar)	// 0
 
 #### 원시 타입
 
-- 숫자 (Number) 타입
+- **숫자 (Number) 타입**
 
   - 정수, 실수 구분 없는 하나의 숫자 타입
   - 부동소수점 형식을 따름
-  - (참고) NaN(Not-A-Number)
+  - (참고) NaN (Not-A-Number)
     - `'abcd' / 10` -> NaN => 에러x but. 숫자형
     - 계산 불가능한 경우 반환되는 값
 
@@ -232,7 +245,11 @@ console.log(bar)	// 0
   const g = NaN		// 산술 연산 불가
   ```
 
-- 문자열 타입
+
+
+- **문자열 타입**
+
+  - 작은 따옴표 또는 큰 따옴표 모두 가능
   - 템플릿 리터럴(Template Literal)
     - 따옴표 대신 backtick(``)으로 표현
     - ${ expression } 형태로 표현식 삽입 가능
@@ -244,20 +261,27 @@ console.log(bar)	// 0
   
   console.log(fullName)	// Brandan Eich
   ```
+
   
-  
-  
-- undefined
+
+- **undefined**
+
   - 변수의 값이 없음을 나타내는 데이터 타입
   - 개발자의 의도가 담기지 x
   - 변수 선언 이후 직접 값을 할당하지 않으면, 자동으로 undefined가 할당됨
+
   
-- null
+
+- **null**
+
   - 변수의 값이 없음을 **의도적으로** 표현할 때 사용하는 데이터 타입
   - 자동 생성되지 않음
   - typeof 연산자의 결과는 object
+
   
-- Boolean 타입
+
+- **Boolean 타입**
+
   - true 또는 false로 표현(대문자 x)
   - Number
     - Undefined, Null : 항상 거짓
@@ -278,6 +302,8 @@ console.log(bar)	// 0
 ## 연산자
 
 **할당 연산자**
+
+- +=, -=, *=, /= 등
 
 - ++
 
@@ -302,7 +328,7 @@ console.log(bar)	// 0
 
 **동등 비교 연산자**(==)
 
-- 비교할 때 암묵적 타입 변환을 통해 타입을 일치키신 후 같은 값인지 비교
+- 비교할 때 **암묵적 타입 변환**을 통해 타입을 일치키신 후 같은 값인지 비교
 
 - 예상치 못한 결과가 발생할 수 있으므로 특별한 경우를 제외하고 사용하지 않음
 
@@ -316,8 +342,9 @@ console.log(bar)	// 0
 **일치 비교 연산자(===)**
 
 - 두 피연산자가 같은 값으로 평가되는지 비교 후 boolean 값을 반환
-- 엄격한 비교가 이뤄지며 암묵적 타입 변환이 발생하지 않음
+- 엄격한 비교 - 암묵적 타입 변환이 발생하지 않음
 - 두 피연산자가 모두 객체일 경우 메모리의 같은 객체를 바라보는지 판별
+- 다르다 : `!==`
 
 
 
@@ -327,8 +354,8 @@ console.log(bar)	// 0
   - and : `&&`
   - or : `||`
   - not : `!`
-    - !true-> false
-    - !!true -> true
+    - `!true`-> false
+    - `!!true` -> true
 - 단축 평가 지원
 
 
@@ -374,6 +401,8 @@ console.log(bar)	// 0
 
 **if statement**
 
+- 조건 표현식의 결과값을 참/거짓으로 판단
+
 - if, else if, else
 
   - 조건은 소괄호 안에 작성
@@ -396,13 +425,15 @@ console.log(bar)	// 0
 
 **switch statement**
 
+- 조건 표현식의 결과값이 어느 값(case)에 해당하는지 판별
+
 - 표현식의 결과값을 이용한 조건문
 
 - 표현식의 결과값과 case문의 오른쪽 값을 비교
 
 - break 및 default문은 [선택적]으로 사용 가능
 
-- break문이 없는 경우 break문을 만나거나 default문을 실행할 때가지 다음 조건문 실행
+- break문이 없는 경우 break문을 만나거나 default문을 실행할 때까지 다음 조건문 실행
 
 - 블록 스코프 생성
 
@@ -447,20 +478,20 @@ console.log(bar)	// 0
 
 ### 반복문
 
-- while
+- **while**
 
   - 조건은 소괄호 안에 작성
   - 실행한 코드는 중괄호 안에 작성
 
   ```js
   let i = 0
-  whiel (i < 5) {
+  while (i < 5) {
       console.log(i) // 0, 1, 2, 3, 4
       i++
   }
   ```
 
-- for
+- **for**
 
   - 구버전에서는 여기까지만 지원
   - 세미콜론(`;`)으로 구분되는 세 부분으로 구성
@@ -478,7 +509,7 @@ console.log(bar)	// 0
   }
   ```
 
-- for ... in
+- **for ... in**
 
   - 주로 객체(object)의 속성(key)을 순회할 때 사용
     - 객체: 클래스의 인스턴스x -> 딕셔너리
@@ -498,7 +529,7 @@ console.log(bar)	// 0
   }
   ```
 
-- for ... of
+- **for ... of**
 
   - 반복 가능한(iterable) 객체를 순회하며 값을 꺼낼 때 사용
   - 실행할 코드는 중괄호 안에 작성
@@ -507,7 +538,7 @@ console.log(bar)	// 0
   ```js
   const fruits = ['딸기', '사과', '수박']
   for (let fruit of fruits) {
-      colsole.log(fruit)		// 딸기, 사과, 수박
+      console.log(fruit)		// 딸기, 사과, 수박
   }
   ```
 
@@ -543,10 +574,12 @@ console.log(bar)	// 0
     - 함수의 반환 값으로 사용 가능
   
   ```js
-      function add(n1, n2) {
+  	// 함수 선언식
+  	function add(n1, n2) {
         return n1 + n2
       }
-  
+  	
+  	// 함수 표현식
       const add2 = function(n1, n2) {
         return n1 + n2
       }
@@ -670,15 +703,15 @@ console.log(bar)	// 0
 - rest operator(...)를 사용하면 함수가 정해지지 않은 수의 매개변수를 배열로 받음
 
   - python의 *args 와 유사
-  - 만약 rest poerator로 처리한 매개변수에 인자가 넘어오지 않을 경우에는, 빈 배열로 처리
+  - 만약 rest operator로 처리한 매개변수에 인자가 넘어오지 않을 경우에는, 빈 배열로 처리
 
   ```js
   const restOpr = function (arg1, arg2, ...restArgs) {
       return [arg1, arg2, restArgs]
   }
   
-  restArgs(1, 2, 3, 4, 5)		// [1, 2, [3, 4, 5]]
-  restArgs(1, 2)				// [1, 2, []]
+  restOpr(1, 2, 3, 4, 5)		// [1, 2, [3, 4, 5]]?? [1, 2, Array(3)]
+  restOpr(1, 2)				// [1, 2, []]?? [1, 2, Array(0)]
   ```
 
   
@@ -707,8 +740,10 @@ console.log(bar)	// 0
 | 비고   |                                                    | Airbnb Style Guide 권장 방식   |
 
 - 선언식 함수와 표현식 함수 모두 타입은 function
+
 - 함수는 변수보다 먼저 메모리에 저장
-  - 그래서 함수 선언식은 호이스팅 가능
+
+  → 함수 선언식은 호이스팅 가능
 
 - 변수는 undefined로 메모리에 저장됨(?)
 
@@ -734,17 +769,17 @@ console.log(bar)	// 0
 
   ```js
   const arrow1 = function (name) {
-      return 'hello, ${name}'
+      return `hello, ${name}`
   }
   
   // 1. function 키워드 삭제
-  const arrow2 = (name) => { return 'hello, ${name}' }
+  const arrow2 = (name) => { return `hello, ${name}` }
   
   // 2. 매개변수가 1개일 경우에만 ( ) 생략 가능
-  const arrow3 = name => { return 'hello, ${name}' }
+  const arrow3 = name => { return `hello, ${name}` }
   
   // 3. 함수 바디가 return을 포함한 표현식 1개일 경우에 { } & return 삭제 가능
-  const arrow4 = name => 'hello, ${name}'
+  const arrow4 = name => `hello, ${name}`
   ```
 
   
@@ -836,7 +871,7 @@ console.log(bar)	// 0
 - 대괄호를 이용하여 생성
 - 0을 포함한 양의 정수 인덱스로 특정 값에 접근 가능
 - 배열의 길이는 **array.length**
-  - (참고) 배열의 마지막 원소는 `array.length - 1`로 접근
+  - (참고) 배열의 마지막 원소는 `array[array.length - 1]`로 접근
 
 
 
@@ -983,7 +1018,7 @@ console.log(bar)	// 0
   ```js
   const fruits = ['banana', 'apple', 'coconut']
   
-  fruits.forEach((fruit, index) =>
+  fruits.forEach((fruit, index) => {
     console.log(furit, index)
                  // banana 0
                  // apple 1
@@ -1046,9 +1081,11 @@ console.log(bar)	// 0
       return num % 2
   })
   
+  // const oddNums = numbers.filter(num => num % 2) : 화살표 함수 특징 이용해서 축약 가능
+  
   console.log(oddNums)		// [1, 3, 5]
   ```
-
+  
   
 
 **reduce**
@@ -1167,12 +1204,12 @@ console.log(bar)	// 0
   ```js
   const numbers = [1, 3, 5, 7, 9]
   
-  const isEveryNumberEven = numbers.some((num) => {
+  const isEveryNumberEven = numbers.every((num) => {
       return num % 2 === 0
   })
   console.log(isEveryNumberEven)	// false
   
-  const isEveryNumberOdd = numbers.some((num) => {
+  const isEveryNumberOdd = numbers.every((num) => {
       return num % 2
   })
   console.log(isEveryNumberOdd)	//	true
@@ -1215,7 +1252,7 @@ console.log(bar)	// 0
   const me = {
       name: 'jack',
       phoneNumber: '01023456789',
-      'samsug products': {
+      'samsung products': {
           buds: 'buds pro',
           galaxy: 's20',
       },
@@ -1229,7 +1266,7 @@ console.log(bar)	// 0
 
 
 
-객체와 메서드
+**객체와 메서드**
 
 - 메서드 : 어떤 객체의 속성이 참조하는 함수
 
@@ -1256,14 +1293,121 @@ console.log(bar)	// 0
 
   
 
-객체 관련 ES6 문법
+**객체 관련 ES6 문법**
 
-- 속성명 축약
-- 메서드명 축약
-- 계산된 속성
-- 구조 분해 할당
-  - key를 그대로 변수명으로 쓸 때
-- Spread operator
+1. 속성명 축약
+
+   - 객체를 정의할 때 key와 할당하는 변수의 이름이 같으면 예시와 같이 축약 가능
+
+     ```js
+     const url = 'https://test.com'
+     const data = { message: 'Hello World!' }
+     
+     const request = { 
+         url: url,
+         data: data }
+     ```
+
+     ↓
+
+     ```js
+     const request2 = {
+         url,
+         data,
+     }
+     ```
+
+2. 메서드명 축약
+
+   - 메서드 선언 시 function 키워드 생략 가능
+
+     ```js
+     var obj = {
+         greeting: function () {
+             console.log('Hi!')
+         }
+     }
+     
+     obj.greeting()	// Hi!
+     ```
+
+     ↓
+
+     ```js
+     const obj = {
+         greeting() {
+             console.log('Hi!')
+         }
+     }
+     
+     obj.greeting()	// Hi!
+     ```
+
+3. 계산된 속성 (computed property name)
+
+   - 객체를 정의할 때 key의 이름을 표현식을 이용하여 동적으로 생성 가능
+
+     ```js
+     const key = 'regions'
+     const value = ['광주', '대전', '구미', '서울']
+     
+     const ssafy = {
+         [key]: value,
+     }
+     
+     console.log(ssafy)
+     console.log(ssafy.regions)
+     ```
+
+4. 구조 분해 할당 (destructing assignment)
+
+   - 배열 또는 객체를 분해하여 속성을 변수에 쉽게 할당할 수 있는 문법
+
+   - 변수명과 키 값이 같을 때 사용 가능
+
+     ```js
+     const userInfomation = {
+         name: 'ssafy kim',
+         userId: 'ssafyStudent1234'
+     }
+     
+     const name = userInformation.name
+     const userId = userInformation.userId
+     ```
+
+     ↓
+
+     ```js
+     const userInformation = {
+         name: 'ssafy kim',
+         userId: 'ssafyStudent1234'
+     }
+     
+     const { name } = userInformation
+     const { userId } = userInformation
+     const { name, userId } = userInformation
+     ```
+     
+     ```js
+     function printUser( { name, userId }) {
+         console.log(name, userId)
+     }
+     printUser(userInformation)
+     ```
+     
+     
+
+5. Spread operator
+
+   - spread operator(...)를 사용하면 객체 내부에서 객체 전개 가능
+
+   - 얕은 복사에 활용 가능
+
+     ```js
+     const obj = {b: 2, c: 3, d: 4}
+     const newObj = {a: 1, ...obj, e: 5}
+     
+     console.log(newObj)		// {a: 1, b: 2, c: 3, d: 4, e: 5}
 
 
 
@@ -1289,10 +1433,12 @@ console.log(bar)	// 0
     - this는 생성되는 객체를 가리킴(Python의 self)
   - 메서드(객체.메서드명()으로 호출 가능한 함수)
     - this는 해당 메서드가 소속된 객체를 가리킴
+    - `.`찍고 실행할 수 있는 함수
 
-- 위의 두 가지 경우를 제외하면 모두 최상위 객체(window)를 가리킴
+- 위의 두 가지 경우를 제외하면 모두 최상위 객체(window)를 가리킴 => 이렇게 동작할 경우 this 쓰지 말고 window 쓸 것
 
   ```js
+  // 메서드 아님
   function getFullName() {
       return this.firstName + this.lastName
   }
@@ -1300,7 +1446,7 @@ console.log(bar)	// 0
   const me = {
       firstName: 'John',
       lastName: 'Doe',
-      getFullName: getFullName,
+      getFullName: getFullName,	// 메서드
   }
   
   const you = {
@@ -1313,6 +1459,74 @@ console.log(bar)	// 0
   you.getFullName()	// JackLee (this === you)
   getFullName()		// NaN (this === whindow)
   ```
+
+
+
+
+**function 키워드와 화살표 함수 차이**
+
+- this.radiuses는 매서드 소속 -> 정상적으로 접근 가능
+
+- forEach의 콜백함수 != 메서드
+
+  - 콜백함수 내부의 this는 window -> this.PI는 정상적으로 접근 불가능
+  - 콜백함수 내부에서 this.PI에 접근하기 위해 함수객체.bind(this) 메서드 사용
+    - bind 과정을 없앤 것이 화살표 함수
+
+  ```js
+  const obj = {
+      PI: 3.14,
+      radiuses: [1, 2, 3, 4, 5],
+      printArea: fundtion () {
+      	this.radiuses.forEach(function (r) {	// .찍어서 호출하기 때문에(obj.printArea) 여기 this는 메서드
+              console.log(this.PI * r * r)	// 여기서 this는 window(function (r)은 .통해서 부를 수 없음)
+          }.bind(this))
+  	},
+  }
+  ```
+
+  ```js
+  const obj = {
+      PI: 3.14,
+      radiuses: [1, 2, 3, 4, 5],
+      printArea: function () {
+          this.radiuses.forEach ((r) => {
+              console.log(this.PI * r * r)
+          })
+      },
+  }
+  ```
+  
+  - 함수 내부에 this 키워드가 존재할 경우
+    - 화살표 함수와 function 키워드로 선언한 함수가 다르게 동작
+
+​	
+
+## lodash
+
+- 모듈성, 성능 및 추가 기능을 제공하는 JavaScript 유틸리티 라이브러리
+
+- array, object등 자료구조를 다룰 때 사용하는 유용하고 간편한 유틸리티 함수들을 제공
+
+- 함수 예시
+
+  - reverse, sortBy, range, random, cloneDeep, ...
+
+- 사용 예시
+
+  ```js
+  <body>
+      <script src="주소"></script>
+  	<script>
+          _.sample([1, 2, 3, 4])		// 3 (random 1 element)
+  		_.sampleSize([1, 2, 3, 4], 2)	// [2. 3] (random 2 element)
+  		_.reverse([1, 2, 3, 4])		// [4, 3, 2, 1]
+  		_.range(5)		// [0, 1, 2, 4]
+  	</script>
+  </body>
+  ```
+
+  - lodash로 깊은 복사 가능
 
   
 
