@@ -66,7 +66,7 @@
 
 - Uniform Resource Identifier
   - 통합 자원 식별자
-  - 인터넷의 자원을 식별하는 유일한 주소(쩡보의 자원을 표현)
+  - 인터넷의 자원을 식별하는 유일한 주소(정보의 자원을 표현)
   - 인터넷에서 자원을 식별하거나 이름을 지정하는데 사용되는 간단한 문자열
   - URL, URN ⊂  URI
 - URN 사용 비중↓ => 일반적으로 URL은 URI와 같은 의미처럼 사용
@@ -199,9 +199,10 @@
   - django_seed
 
     - 모델 구조에 맞는 더미 데이터 생성
+    - `$ pip install django-seed`
     - `python manage.py seed <클래스명> --number=<원하는 갯수>`
     - INSTALLED_APPS에 등록해줘야 함
-
+    
     
 
 - Content-Type entity header
@@ -380,7 +381,7 @@ serializer는 직접 import 해줘야 함
 
 - many=Ture
   - Serializing multiple objects
-  - 단일 인스턴스 대신 QuerySet 등을 직렬화하기 위해서는 serializer를 인스턴스화 할 때 many-True를 키워드 인자로 전달해야 함
+  - 단일 인스턴스 대신 QuerySet 등을 직렬화하기 위해서는 serializer를 인스턴스화 할 때 many=True를 키워드 인자로 전달해야 함
 
 
 
