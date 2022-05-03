@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <!--
+    javascript 파일을 별도로 생성하여 참조하는 방식
+    1. .js 확장자를 가진 파일을 생성한다
+    2. 스크립트 파일을 사용하려는 html 문서에 script 태그를 이용하여 작성
+    ※ 주의: 참조하는 script 태그 안에 내용을 작성해도 실행x
+  -->
+<head>
+  <meta charset="UTF-8">
+  <title>외부참조</title>
+</head>
+<body>
+  <h1>외부 스크립트 참조</h1>
+  <script src="js02.js">
+    console.log("이것도 출력되나")  // 안됨
+  </script>
+  <script>
+    console.log('이건 출력 되겠지') // 됨
+  </script>
+  <script>
+    // 한줄 주석
+    /*
+      여러줄 주석
+    */
+  </script>
+</body>
+</html>
