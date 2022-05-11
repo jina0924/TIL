@@ -315,7 +315,7 @@ Vue.js 코드 작성 순서
 
 - CSS 선택자 문자열 or HTML Element로 작성
 
-- new를 이요한 인스턴스 생성 때만 사용
+- new를 이용한 인스턴스 생성 때만 사용
 
   ```js
       const app = new Vue({
@@ -448,7 +448,7 @@ Vue.js 코드 작성 순서
 
 **v-text**
 
-- element의 textContent를 업데이터
+- element의 textContent를 업데이트
 
   ```html
     <div id="app">
@@ -691,7 +691,7 @@ Vue.js 코드 작성 순서
 
 **v-bind**
 
-- HTML 요소의 속성에 Vue으 ㅣ상태 데이터를 값으로 할당
+- HTML 요소의 속성에 Vue의 상태 데이터를 값으로 할당
 
 - Object 형태로 사용하면 value가 true인 key가 class 바인딩 값으로 할당
 
@@ -957,7 +957,7 @@ Vue.js 코드 작성 순서
 
 - 선언형 프로그램
   - 계산해야 하는 목표 데이터를 정의 (computed)
-- 명령형 프로그램ㅇ
+- 명령형 프로그램
   - 데이터가 바뀌면 특정 함수를 실행해 (watch)
 
 

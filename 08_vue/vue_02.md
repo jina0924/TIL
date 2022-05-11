@@ -429,6 +429,7 @@ Emit event 작성
 **event 이름 컨벤션**
 
 - 이벤트는 자동 대소문자 변환을 제공하지 않음
+- HTML의 대소문자 구분을 위해 DOM 템플릿의 v-on 이벤트 리스너는 항상 자동으로 소문자 변환되기 대문에 v-on:myEvent는 자동으로 v-on:myevent로 변환
 - 항상 kebab-case를 사용하는 것을 권장
 
 
@@ -529,10 +530,27 @@ Emit event 작성
 
 
 
+**History mode**
+
+- HTML History API를 사용해서 router를 구현한 것
+- 브라우저의 히스토리는 남기지만 실제 페이지는 이동하지 않는 기능을 지원
+
+- ∴ 페이지를 다시 로드하지 않고 URL 탐색 가능
+
+
+
+**[참고] History API**
+
+- DOM의 Window 객체는 history 객체를 통해 브라우저의 세션 기록에 접근할 수 있는 방법을 제공
+- history 객체는 사용자를 자신의 방문 기록 앞과 뒤로 보내거나, 기록의 특정 지점으로 이동하는 등 유용한 메서드와 속성을 가짐
+
+
+
 1. Named Routes
    - 바인드가 있어야지만 객체로 동작함
 2. 프로그래밍 방식 네비게이션
-   - 
+   - 다른 URL로 이동하려면 this.$router.push를 호출할 수 있음
+3. Dynamic Route Matching
 
 
 
