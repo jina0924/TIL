@@ -6,7 +6,7 @@
 
 - Asynchronous JavaScript And XML (비동기식 JavaScript와 XML)
   - XML : eXtended Markup Language
-- 서버와 통신하기 위해 XMLHttpRequest 객체를 활용
+- 서버와 통신하기 위해 **XMLHttpRequest** 객체를 활용
 -  X가 XML이긴 하지만 JSON을 더 많이 사용함
   - 더 가벼운 용량과 JavaScript의 일부라는 장점 때문
   - XML에는 불필요한 데이터가 상대적으로 많은 편
@@ -35,6 +35,8 @@
 **XMLHttpRequest 객체**
 
 - 서버와 상호작용하기 위해 사용되며 전체 페이지의 새로 고침 없이 데이터를 받아올 수 있음
+
+- 주로 AJAX 프로그래밍에 사용
 
 - 이름과 달리 XML 뿐만 아니라 모든 종류의 데이터를 받아올 수 있음
 
@@ -181,6 +183,8 @@ Blocking vs. Non-Blocking
 
 
 **Concurrency model**
+
+- Event loop를 기반으로 하는 동시성 모델(Concurrency model)
 
 1. **Call Stack**
 
@@ -339,11 +343,23 @@ callback Hell 해결하기
 ### Axios
 
 - "Promise based HTTP client for the brower and Node.js"
+
 - 브라우저를 위한 Promise 기반의 클라이언트
+
 - 확장 가능한 인터페이스와 함께 패키지로 사용이 간편한 라이브러리를 제공
   - jsDelivr CDN or unpkg CDN 둘 중 하나 골라서 복붙
+  
 - 알아서 파싱해줌(res.data)
+
 - Axios 깃헙에서 사용법 찾아볼 수 있음
+
+  ```js
+  axios.get('주소')	// Promise return
+  	.then(..)
+  	.catch(..)
+  ```
+
+  
 
 
 

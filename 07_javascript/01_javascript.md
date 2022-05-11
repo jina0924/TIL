@@ -545,8 +545,8 @@ console.log(x)		// 1
   - in으로 적는다면 배열의 인덱스가 출력됨
 
   ```js
-  for (const fruit of fruits) {
-      console.log(fruit)		// 딸기, 사과, 수박
+  for (const fruit in fruits) {
+      console.log(fruit)		// 0, 1, 2
   }
   ```
 
