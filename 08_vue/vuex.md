@@ -256,27 +256,220 @@ Actions의 "context" 객체
 
 
 
-
-
 ### Delete Todo
 
+- deleteTodo action 함수 호출
 
+  ```vue
+  <template>
+    ...
+        <button @click="deleteTodo(todo)">Delete</button>
+      ...
+  </template>
+  
+  <script>
+  export default {
+    ...
+    props: {
+      todo: Object,
+    },
+    methods: {
+      deleteTodo: function () {
+      this.$store.dispatch('deleteTodo', this.todo)
+      },
+    }
+  }
+  </script>
+  ```
 
+- Actions & Mutations
 
+  ```js
+    actions: {
+      ...
+      deleteTodo: function({ commit }, todoItem) {
+        commit('DELETE_TODO', todoItem)
+      },
+    },
+  ```
 
+  ```js
+    mutations: {
+      ...
+      DELETE_TODO: function (state, todoItem) {
+        // 1. todoItem이 첫 번째로 만나는 요소의 index를 가져옴
+        const index = state.todos.indexOf(todoItem)
+  
+        // 2. 해당 index 1개만 삭제하고 나머지 요소를 토대로 새로운 배열 생성
+        this.state.todos.splice(index, 1)
+      },
+    },
+  ```
 
+  
 
 ### Update Todo
 
+- updateTodoStatus action 함수 호출
+
+  ```vue
+  <template>
+    <div>
+      <div>
+        <span :class="{ completed:todo.completed }" @click="updateTodoStatus">{{ todo.title }}</span>
+        <button @click="deleteTodo(todo)">Delete</button>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import { mapActions } from 'vuex'
+  
+  export default {
+    ...
+    props: {
+      todo: Object,
+    },
+    methods: {
+      ...
+      updateTodoStatus: function () {
+        this.$store.dispatch('updateTodoStatus', this.todo)
+      },
+    }
+  }
+  </script>
+  ```
+
+- Actions & Mutations
+
+  ```js
+    actions: {
+      ...
+      updateTodoStatus: function ({ commit }, todoItem) {
+        commit('UPDATE_TODO_STATUS', todoItem)
+      },
+    },
+  ```
+
+  ```js
+    mutations: {
+      ...
+      UPDATE_TODO_STATUS: function (state, todoItem) {
+        // 배열의 각 요소에 함수를 적용 시킨 새로운 배열을 만들어서 state.todos에 할당
+        state.todos = state.todos.map((todo) => {
+          // 1. 클릭한 todoItem과 일치하는 state의 todo를 찾으면(업데이트 해줄 todo 찾기), 
+          if (todo === todoItem) {
+            // todo.completed = !todo.completed
+            return {...todo, completed: !todo.completed}
+          }
+          // 클릭한 todoItem이 아니라면 원본 리턴
+          return todo
+        })
+      }
+    },
+  ```
+
+  
+
+**JavaScript Spread Syntax**
+
+- 전개 구문
+
+- 반복 가능한 (iterable) 문자를 요소로 확장하여, 0개 이상의 key-value의 쌍으로 된 객체로 확장시킬 수 있음
+
+- '...'을 붙여서 요소 또는 키가 0개 이상의 iterable object를 하나의 object로 간단하게 표현하는 법
+
+- Spread Syntax의 대상은 반드시 iterable 객체여야 함
+
+- 주 사용처
+
+  1. 함수 호출
+     - 배열의 목록을 함수의 인수로 활용 시
+  2. 배열
+  3. 객체
+     - 객체 복사
+
+  ```js
+    mutations: {
+      ...
+      UPDATE_TODO_STATUS: function (state, todoItem) {
+        // 배열의 각 요소에 함수를 적용 시킨 새로운 배열을 만들어서 state.todos에 할당
+        state.todos = state.todos.map((todo) => {
+          // 1. 클릭한 todoItem과 일치하는 state의 todo를 찾으면(업데이트 해줄 todo 찾기), 
+          if (todo === todoItem) {
+            // todo.completed = !todo.completed
+            return {...todo, completed: !todo.completed}
+          }
+          // 클릭한 todoItem이 아니라면 원본 리턴
+          return todo
+        })
+      }
+    },
+  ```
 
 
 
+- v-bind를 사용한 class binding
 
+  ```vue
+  <template>
+    <div>
+      <div>
+        <span :class="{ completed:todo.completed }" @click="updateTodoStatus(todo)">{{ todo.title }}</span>
+        <button @click="deleteTodo(todo)">Delete</button>
+      </div>
+    </div>
+  </template>
+  
+  ...
+  <style scoped>
+  .completed {
+    text-decoration: line-through;
+  }
+  </style>
+  ```
 
+  
 
 ### Getters
 
+- 완료된 todo 개수 계산
 
+  ```js
+  // index.js
+    getters: {
+      completedTodosCount: function (state) {
+        return state.todos.filter((todo) => {
+          return todo.completed === true
+        }).length
+      },
+    }
+  ```
+
+  ```vue
+  // App.vue
+  
+  <template>
+    <div id="app">
+      <h1>Todo List</h1>
+      <h2>Completed Todo: {{ completedTodosCount }}</h2>
+      <TodoList />
+      <TodoForm />
+    </div>
+  </template>
+  
+  <script>
+  ...
+    computed: {
+      completedTodosCount: function () {
+        return this.$store.getters.completedTodosCount
+      },
+    }
+  
+  </script>
+  ```
+
+  
 
 
 
@@ -284,16 +477,69 @@ Actions의 "context" 객체
 
 ### Component Binding Helper
 
+- JS Array Helper Method를 통해 배열 조작을 편하게 하는 것과 유사
+  - 논리적인 코드 자체가 변함 x -> 쉽게 사용할 수 있도록 되어 있음에 초점
+
 - 종류
   - mapState
   - mapGetters
   - mapActions
+  - mapMutations
+
+  
+
+- mapState
+
+  ```vue
+  computed: {
+    todos: function () {
+      return this.$store.state.todos
+    },
+  }
+  ```
+
+  ↓ 수정 후
+
+  ```vue
+  import { mapState } from 'vuex'
+  ...
+  computed: {
+    ...mapState(['todos',])
+  }
+  ```
 
 
 
+- mapActions
 
+  - 이전에 dispatch()를 사용했을 때 payload로 넘겨줬던 this.todo를 pass prop으로 변경해서 전달해야 함
 
+  ```vue
+  <template>
+    <div>
+      <div>
+        <span :class="{ completed:todo.completed }" @click="updateTodoStatus(todo)">{{ todo.title }}</span>
+        <button @click="deleteTodo(todo)">Delete</button>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import { mapActions } from 'vuex'
+  
+  export default {
+    ...
+    methods: {
+      ...mapActions([
+        'deleteTodo',
+        'updateTodoStatus',
+      ])
+    }
+  }
+  </script>
+  ```
 
+  
 
 ### LocalStorage
 
@@ -316,9 +562,22 @@ vuex-persistedstate
 
 - 페이지가 새로고침 되어도 Vues state 유지시킴
 
+- 설치 방법
+
   ```bash
   $ npm i vuex-persistedstate
   ```
 
-  
+- 라이브러리 사용
 
+  ```js
+  import createPersistedState from 'vuex-persistedstate'
+  
+  Vue.use(Vuex)
+  
+  export default new Vuex.Store({
+    plugins: [
+      createPersistedState(),
+    ],
+    ...
+  ```
