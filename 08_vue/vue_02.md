@@ -201,7 +201,7 @@
     render: h => h(App),
   }).$mount('#app')	// el: '#app'과 같음
 
-- package.json / package-lock.jsoin
+- package.json / package-lock.json
   - requirements.txt와 같은 역할
   - freeze필요 x
   - package.json
@@ -387,7 +387,7 @@ Props시 숫자 전달하려면
 - Listening to Child Components Events
 - `$emit(eventName)`
   - 현재 인스턴스에서 이벤트를 트리거
-  - 추가 인자는 리스터의 콜백 함수로 전달
+  - 추가 인자는 리스너의 콜백 함수로 전달
 
 - 부모 컴포넌트는 자식 컴포넌트가 사용되는 템플릿에서 v-on을 사용하여 자식 컴포넌트가 보낸 이벤트를 청취 (v-on을 이요한 사용자 지정 이벤트)
 
