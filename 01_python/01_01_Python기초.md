@@ -88,7 +88,7 @@
     - 변수에 할당된 값의 타입
 
       ```python
-      x = 'ssafy'
+      x = 'string'
       y = 123
       print(type(x), type(y))
       ```
