@@ -4,7 +4,7 @@
 
 ## Server & Client
 
-Server
+**Server**
 
 - 리소스(정보, 서비스) 를 제공하는 컴퓨터 시스템
 - 정보 & 서비스
@@ -13,15 +13,15 @@ Server
 
 
 
-Client
+**Client**
 
-- 서버에게 그 서버가 맡는 서비스를 요청
-- 서버가 요구하는 방식에 맞게 제공
-- 서버로부터 반환되는 응답을 사용자에게 적절한 방식으로 표현하는 기능을 가진 시스템
+- 서버에게 그 서버가 맡는 **서비스를 요청**
+- 서비스 요청을 위해 필요한 인자를 **서버가 요구하는 방식에 맞게 제공**
+- 서버로부터 반환되는 응답을 **사용자에게 적절한 방식으로 표현**하는 기능을 가진 시스템
   - 브라우저
   - 포스트맨
   - 파이썬 - request
-  - axios : 브라우저라는 클라이언트를 조작하기 위한 라이브러라
+  - axios : 브라우저라는 클라이언트를 조작하기 위한 라이브러리
   - vue
 
 
@@ -38,6 +38,7 @@ Client - 서버에 올바른 요청
 
 - 서버 : 정보 제공
   - 데이터 베이스가 서버의 존재 이유
+  - DB와 통신하며 데이터를 CRUD
 - 클라이언트 : 정보 요청 & 표현
 
 
@@ -59,67 +60,88 @@ Client - 서버에 올바른 요청
 
 
 
-Origin(출처)
+**Origin(출처)**
 
 - 동일 출처
 
 
 
-Cross-Origin Resource Sharing(CORS)
+**Cross-Origin Resource Sharing(CORS)**
 
 - 추가 HTTP header를 사용
   - 다른 출처의 자원에 접근할 수 있는 권한을 부여하도록 브라우저에 알려주는 체제
+- 보안 상의 이유로 브라우저는 교차 출처 HTTP 요청을 제한 (SOP)
 - 다른 출처의 리소스를 불러오려면 그 출처에서 올바른 CORS header를 포함한 응답을 반환해야 함
 
 
 
-Cross-Origin Resource Sharing Policy (CORS Policy )
+**Cross-Origin Resource Sharing Policy (CORS Policy )**
 
 - CORS를 사용해 교차 출처 접근을 허용하기
 - 서버에 지정할 수 있는 방법
+- ⇔ SOP
 
 
 
-Why CORS?
+**Why CORS?**
 
 1. 브라우저 & 웹 애플리케이션 보호
+   - 서버는 요청에 항상 응답함 → 브라우저가 차단
 2. Server의 자원 관리
    - 누가 해당 리소스에 접근할 수 있는지 관리 가능
 
 
 
-Access-Control-Allow-Origin 응답 헤더
+**How CORS?**
+
+- CORS 표준에 의해 추가된 HTTP Header를 통해 이를 통제
+
+
+
+**Access-Control-Allow-Origin 응답 헤더**
+
+- 이 응답이 주어진 출처(origin)로 부터 요청 코드와 공유될 수 있는지를 나타냄
 
 - 예시
   - Access-Control-Allow-Origin : *
+    - `*` : 모든 도메인에서 접근할 수 있음을 의미
+- django는 django-cors-headers 라이브러리를 통해 응답 헤더 및 추가 설정 가능
 
 
 
-django-cor-headers 라이브러리
+**django-cor-headers 라이브러리**
 
+- 응답에 CORS header를 추가해주는 라이브러리
 
+  ```bash
+  $ pip install django-cors-headers
+  ```
 
-미들웨어는 순서 중요함
+  ```python
+  # settings.py
+  
+  INSTALLED_APPS = [
+      ...
+      'corsheaders',
+      ...
+  ]
+  
+  MIDDLEWARE = [
+      ...
+      "corsheaders.middleware.CorsMiddleware",
+      'django.middleware.security.SecurityMiddleware',
+  ]
+  
+  # 특정 origin에게만 교차 출처 허용
+  CORS_ALLOWED_ORIGINS = [
+      'http://localhost:8080',
+  ]
+  
+  # 모두에게 교차출저 허용(*)
+  # CORS_ALLOWED_ALL_ORIGINS = True
+  ```
 
-```python
-MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
-    'django.middleware.security.SecurityMiddleware',
-    ...
-]
-...
-# 특정 origin에게만 교차 출처 허용
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-]
-
-# 모두에게 교차출저 허용(*)
-# CORS_ALLOWED_ALL_ORIGINS = True
-```
-
-
-
-
+  - 미들웨어는 순서 중요함
 
 
 
@@ -161,7 +183,8 @@ HOW? Access-Control-Allow-Origin response header
 
 - 인증, 입증
 - 내가 누구인지 확인하는 과정
-
+- 401 Unauthorized
+  - 의미상 비인증(unauthenticated)을 의미
 
 
 
@@ -172,6 +195,9 @@ HOW? Access-Control-Allow-Origin response header
 - 액세스 권한을 부여하는 과정(절차)
 - 권한 부여는 항상 인증을 따라야 함
 - 인증이 되었어도 모든 권한을 부여 받는 것은 아님
+- 403 Forbidden
+  - 401과 다른점 : 서버는 클라이언트가 누구인지 알고 있음
+
 
 
 
@@ -188,7 +214,7 @@ HOW? Access-Control-Allow-Origin response header
 
 
 
-Basic Token Authentication
+**Basic Token Authentication**
 
 - 토큰 값 넣어서 보낼 때 띄어쓰기 유의할 것
 
@@ -206,7 +232,7 @@ Basic Token Authentication
 
 - JWT 자체가 인증에 필요한 정보를 모두 갖기 때문
 
-  
+  ↑ 장점	↓ 단점
 
 - 토큰 탈취 시 서버 측에서 토큰 무효화가 불가능(블랙리스팅 테이블 활용)
 
@@ -292,6 +318,11 @@ read => 토큰 검증
 
 signup
 
+```bash
+$ pip install django-allauth
+$ pip install dj-rest-auth
+```
+
 ```python
 # settings.py
 
@@ -335,8 +366,6 @@ urlpatterns = [
     path('api/v1/accounts/signup', include('dj_rest_auth.registration.urls')),
 ]
 ```
-
-
 
 
 
