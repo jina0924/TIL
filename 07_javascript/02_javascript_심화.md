@@ -116,7 +116,7 @@ DOM 관련 객체의 상속 구조
   ```js
       // 1-3. querySelectorAll
       const liTags = document.querySelectorAll('li')
-      const secondLiTags = document.querySelectorAll('.ssafy-location')
+      const secondLiTags = document.querySelectorAll('.edu-location')
   ```
 
 - querySelector(), querySelectorAll()를 사용하는 이유
@@ -234,7 +234,7 @@ DOM 관련 객체의 상속 구조
 
   ```js
   const header = document.querySelector('#location-header')
-  header.setAttribute('class', 'ssafy-location')
+  header.setAttribute('class', 'edu-location')
   ```
 
   
@@ -245,9 +245,9 @@ DOM 관련 객체의 상속 구조
   - 인자(attributeName)는 값을 얻고자 하는 속성의 이름
 
   ```js
-  const getAttr = document(querySelector('.ssafy-location'))
+  const getAttr = document(querySelector('.edu-location'))
   getAttr.getAttribute('class')
-  'ssafy-location'
+  'edu-location'
   ```
 
   
@@ -256,7 +256,7 @@ DOM 관련 객체의 상속 구조
 
 ```js
 h1.innerText
-'Hello SSAFY'
+'Hello'
 h1.innerText = '쉬는 시간!!'	// 객체값 바꿈
 '쉬는 시간!!'
 ```

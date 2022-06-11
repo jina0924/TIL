@@ -216,8 +216,8 @@ Blocking vs. Non-Blocking
    ```js
    console.log('Hi')	// 1순위
    
-   setTimeout(function ssafy () {	// setTimeout 함수 자체는 1순위 (Web API에 던지고 끝남)
-       console.log('SSAFY')
+   setTimeout(function go () {	// setTimeout 함수 자체는 1순위 (Web API에 던지고 끝남)
+       console.log('GO')
    }, 3000)		// 콜백 함수는 2순위
    
    console.log('Bye')	// 1순위

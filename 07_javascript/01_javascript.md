@@ -1351,12 +1351,12 @@ console.log(x)		// 1
      const key = 'regions'
      const value = ['광주', '대전', '구미', '서울']
      
-     const ssafy = {
+     const korea = {
          [key]: value,
      }
      
-     console.log(ssafy)
-     console.log(ssafy.regions)
+     console.log(korea)
+     console.log(korea.regions)
      ```
 
 4. 구조 분해 할당 (destructing assignment)
@@ -1367,8 +1367,8 @@ console.log(x)		// 1
 
      ```js
      const userInfomation = {
-         name: 'ssafy kim',
-         userId: 'ssafyStudent1234'
+         name: 'jin kim',
+         userId: 'Student1234'
      }
      
      const name = userInformation.name
@@ -1379,8 +1379,8 @@ console.log(x)		// 1
 
      ```js
      const userInformation = {
-         name: 'ssafy kim',
-         userId: 'ssafyStudent1234'
+         name: 'jin kim',
+         userId: 'Student1234'
      }
      
      const { name } = userInformation
