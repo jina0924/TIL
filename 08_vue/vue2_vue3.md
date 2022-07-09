@@ -2,12 +2,34 @@
 
 [toc]
 
+## v-model
+
+- 커스텀 컴포넌트를 사용할 때, `v-model` prop와 event 기본 명칭이 변경됨
+  - prop : `value` → `modelValue`
+  - event : `input` → `update:modelValue`
+- `v-bind` 의 `.sync` 수식어와 컴포넌트의 `model` 옵션이 제거되고 `v-model` 전달인자로 대체됨
+- 동일 컴포넌트에서 다중의 `v-model` 바인딩 가능
+- 사용자 지정 `v-model` 수식어를 생성하는 기능 추가 
+
+
+
 ## key 속성
 
 - Vue가 고유한 key를 자동으로 생성
   - `v-if`, `v-else`, `v-else-if` 에서 더 이상 key 필요 x
+  
   - 수동으로 key를 정할 경우, 반드시 고유한 key를 사용해야 함 (의도적으로 동일한 key를 사용하여 분기를 강제로 재사용할 수 없음)
+  
   - `<template v-for>` 의 key는 자식이 아닌 `<template>` 태그에 있어야 함
+  
+    ```vue
+    <template v-for="item in list" :key="item.id">
+      <div>...</div>
+      <span>...</span>
+    </template>
+    ```
+  
+    
 
 
 
