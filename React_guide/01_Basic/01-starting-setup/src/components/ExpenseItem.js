@@ -2,12 +2,16 @@ import "./ExpenseItem.css";
 
 // 관습상 파일 이름은 반복 사용됨
 function ExpenseItem() {
+  const expenseDate = new Date(2022, 2, 28);
+  const expenseTitle = "Car Insurance";
+  const expenseAmount = 294.67;
+
   return (
     <div className="expense-item">
-      <div>September 15th 2022</div>
+      <div>{expenseDate.toISOString()}</div>
       <div clasName="expense-item__description">
-        <h2>Car Insurance</h2>
-        <div className="expense-item__price">$294.76</div>
+        <h2>{expenseTitle}</h2>
+        <div className="expense-item__price">${expenseAmount}</div>
       </div>
     </div>
   );
