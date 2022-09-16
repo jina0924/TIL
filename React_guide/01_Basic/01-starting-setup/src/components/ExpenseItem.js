@@ -1,17 +1,17 @@
 import "./ExpenseItem.css";
 
 // 관습상 파일 이름은 반복 사용됨
-function ExpenseItem() {
-  const expenseDate = new Date(2022, 2, 28);
-  const expenseTitle = "Car Insurance";
-  const expenseAmount = 294.67;
+function ExpenseItem(props) {
+  // const expenseDate = new Date(2022, 2, 28);
+  // const expenseTitle = "Car Insurance";
+  // const expenseAmount = 294.67;
 
   return (
     <div className="expense-item">
-      <div>{expenseDate.toISOString()}</div>
+      <div>{props.date.toISOString()}</div>
       <div clasName="expense-item__description">
-        <h2>{expenseTitle}</h2>
-        <div className="expense-item__price">${expenseAmount}</div>
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">${props.amount}</div>
       </div>
     </div>
   );
