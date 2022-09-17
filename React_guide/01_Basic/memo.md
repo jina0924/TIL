@@ -48,3 +48,29 @@ $ npm start
 
 자바스크립트 XML
 
+
+
+## Props
+
+
+
+**toLocaleString**()
+
+배열의 요소를 나타내는 문자열을 반환
+
+
+
+**getFullYear()**
+
+주어진 날짜의 현지 시간 기준 연도를 반환
+
+
+
+**Date() 생성자**
+
+시간의 특정 지점을 나타내는 Date 객체를 플랫폼에 종속되지 않은 형태로 생성
+
+새로운 Date 객체를 생성하는 방법 : `new Date()`
+
+- `new Date()` : 현재 날짜 및 시간
+- 인자로 value, dateString, year, monthIndex, day, hours, minutes, seconds 등을 넣을 수 있음
