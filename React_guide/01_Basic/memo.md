@@ -48,6 +48,18 @@ $ npm start
 
 자바스크립트 XML
 
+package.json
+
+```json
+{
+    ...
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+}
+```
+
+- react-dom만 사용하게 됨
+
 
 
 ## Props
