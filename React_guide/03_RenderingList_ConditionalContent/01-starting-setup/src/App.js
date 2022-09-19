@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ExpenseList from "./components/Expenses/ExpenseList";
+import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 // function App() {
@@ -36,7 +36,7 @@ const App = () => {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <ExpenseList items={expenses} />
+      <Expenses items={expenses} />
     </div>
   ); // JSX 기능
 };

@@ -13,15 +13,17 @@ const ExpenseItem = (props) => {
   //   setTitle("Updated!"); // title에 새로운 값을 할당하지 않는 이유: state의 업데이트를 예약함
   // }; // 작명 방법 : 트리거 + 핸들러
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
-      <div className="expense-item__description">
-        <h2>{props.title}</h2>
-        <div className="expense-item__price">${props.amount}</div>
-      </div>
-      {/* <button onClick={clickHandler}>Change Title</button> */}
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h2>{props.title}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div>
+        {/* <button onClick={clickHandler}>Change Title</button> */}
+      </Card>
+    </li>
   );
-};  // stateless 컴포넌트(presentational component, dump component)
+}; // stateless 컴포넌트(presentational component, dump component)
 
 export default ExpenseItem;
