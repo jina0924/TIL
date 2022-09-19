@@ -8,7 +8,6 @@ import "./ExpenseList.css";
 function ExpenseList(props) {
   const [filteredYear, setFilteredYear] = useState("2020");
   const filterChangeHandler = (selectedYear) => {
-    // console.log("Expenses.js");
     setFilteredYear(selectedYear);
   };
   const filteredExpenses = props.items.filter((expense) => {
