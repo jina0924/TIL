@@ -22,17 +22,15 @@ const DUMMY_EXPENSES = [
     title: "New Desk (Wooden)",
     amount: 450,
     date: new Date(2021, 5, 12),
-  }
+  },
 ];
 
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses]
-    })
-    // console.log("In App.js");
-    // console.log(expense);
+      return [expense, ...prevExpenses];
+    });
   };
 
   return (
