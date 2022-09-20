@@ -47,3 +47,7 @@ $ npm install redux react-redux
 ```
 
 - react-redux : 리액트 앱과 리덕스 스토어와 리듀서에 간단히 접속
+
+
+
+※ Redux 사용 시 절대 기존의 state를 변형해서는 안 됨 => 새로운 state 객체를 반환하여 항상 재정의함
