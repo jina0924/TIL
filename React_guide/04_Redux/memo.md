@@ -43,6 +43,7 @@ State
 ## Redux 설치
 
 ```bash
-$ npm install redux
+$ npm install redux react-redux
 ```
 
+- react-redux : 리액트 앱과 리덕스 스토어와 리듀서에 간단히 접속
