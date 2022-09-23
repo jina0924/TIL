@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [counter, setCounter] = React.useState(0)
+      const onClick = () => {
+        // state 세팅하는 방법
+        // 1. 직접 값을 설정해주는 것
+        // setCounter(counter + 1)
+        // 2. 함수를 전달하기
+        setCounter((current) => current + 1)
+      }
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      )
+    }
+    const root = document.getElementById("root")
+    ReactDOM.render(<App />, root)
+  </script>
+</html>

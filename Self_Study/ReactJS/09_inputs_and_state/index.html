@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [minutes, setMinutes] = React.useState()
+      const onChange = (event) => {
+        // console.log(event.target.value)
+        setMinutes(event.target.value)
+        // SyntheticBaseEvent 찍힘 why? react가 event를 최적화 시키므로
+      }
+      return (
+        // JSX를 쓰고 있으므로 for, class 등 이미 선점된 단어 사용하면
+        <div>
+          <h1 className="hi">Super Converter</h1>
+          <label htmlFor="minutes">Minutes</label>
+          <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} />
+          <h4>You want to convert {minutes}</h4>
+          <label htmlFor="hours">Hours</label>
+          <input id="hours" placeholder="Hours" type="number" />
+        </div>
+      )
+    }
+    const root = document.getElementById("root")
+    ReactDOM.render(<App />, root)
+  </script>
+</html>
