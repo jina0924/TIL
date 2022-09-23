@@ -4,6 +4,8 @@
 
 https://router.vuejs.org/api/interfaces/routerhistory.html
 
+https://sunny921.github.io/posts/vuejs-router-03/
+
 ## Methods
 
 ### go
