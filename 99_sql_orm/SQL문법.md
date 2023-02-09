@@ -36,6 +36,17 @@ SELECT {COLUMN} AS {COLUMN_ALIAS} FROM {TABLE_NAME} AS {TABLE_ALIAS}
 
 ```sql
 SELECT DISTINCT {COLUMN} FROM {TABLE}
+# TABLE 테이블의 COLUMN 필드에서 중복되는 값 제외한 후 조회
+```
+
+
+
+## LIMIT
+
+> 지정한 개수만큼 데이터 조회
+
+```sql
+SELECT {COULMN} FROM {TABLE} LIMIT {CNT}
 ```
 
 
@@ -204,3 +215,87 @@ SELECT {COLUMN} FROM {TABLE} GROUP BY {COLUMN}
 - `FLOOR(값)` : 버림(정수값 출력)
 - `TRUNC` : 소수점 버림
 - `MOD` : 나머지
+
+
+
+## JOIN
+
+> 2개 이상의 다른 테이블을 결합시키는 것
+>
+> JOIN을 하려면 반드시 공통열(key)이 있어야 함
+
+
+
+### INNER JOIN(JOIN)
+
+> 교집합. 두 테이블의 공통값이 매칭되는 데이터만 조회
+
+- 예시
+
+  ```sql
+  SELECT * FROM TABLE_A
+  JOIN TABLE_B ON TABLE_A.NAME = TABLE_B.NAME
+
+
+
+### OUTER JOIN
+
+> 합집합. 두 테이블 간의 공통값으로 매칭되는 값 뿐만 아니라 매칭되지 않는 데이터까지 조회
+
+- `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN`
+
+- 예시
+
+  ```sql
+  SELECT FIRST_HALF.FLAVOR FROM FIRST_HALF
+  LEFT JOIN ICECREAM_INFO ON FIRST_HALF.FLAVOR = ICECREAM_INFO.FLAVOR
+  ```
+
+  - `FIRST_HALF` 테이블 기준으로 `LEFT JOIN`하려면 `FROM` 절에 `FIRST_HALF`를, `LEFT JOIN`절에는 `ICECREAM_INFO`를 써야함
+
+https://suy379.tistory.com/105
+
+
+
+## DATE_FORMAT
+
+> 날짜 포맷을 변경하는 함수
+
+```sql
+DATE_FORMAT(date, format)
+```
+
+- 예시
+
+  ```sql
+  SELECT DATE_FORMAT('20230209', '&Y/%m/%d')
+  # 2023/02/09
+  
+  SELECT DATE_FORMAT('2023-02-09', '%W %M %Y')
+  # Thursday February 2023
+  ```
+
+  
+
+## CASE
+
+> 조건에 따라 서로 다른 값을 반환
+
+- if 문 방식
+
+  ```sql
+  CASE WHEN {조건식} THEN {반환값}
+  WHEN {조건식2} THEN {반환값2}
+  ...
+  ELSE {조건에 만족하지 않을 경우 반환값}
+  END
+  ```
+
+  
+
+  ```sql
+  SELECT PT_NAME, PT_NO, GEND_CD, AGE,
+  CASE WHEN TLNO IS NULL THEN 'NONE' WHEN TLNO IS NOT NULL THEN TLNO END AS TLNO
+  ```
+
+  
