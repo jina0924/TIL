@@ -51,8 +51,6 @@ SELECT {COULMN} FROM {TABLE} LIMIT {CNT}
 
 
 
-
-
 ## WHERE
 
 > 조건에 따른 검색
@@ -299,3 +297,89 @@ DATE_FORMAT(date, format)
   ```
 
   
+
+## DATEDIFF
+
+> MySQL
+>
+> 두 날짜 간의 차이 출력
+
+```sql
+SELECT DATEDIFF(DATE1, DATE2)
+```
+
+- 예시
+
+  ```sql
+  SELECT HISTORY_ID, CAR_ID,
+  DATE_FORMAT(START_DATE, '%Y-%m-%d') AS START_DATE,
+  DATE_FORMAT(END_DATE, '%Y-%m-%d') AS END_DATE,
+  CASE WHEN DATEDIFF(END_DATE, START_DATE) >= 29 THEN '장기 대여' ELSE '단기 대여' END AS RENT_TYPE
+  FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+  ```
+
+
+
+## 문자열 자르기
+
+### SUBSTR
+
+> Oracle
+
+```sql
+SUBSTR({문자열}, {시작위치}, {길이})
+```
+
+- 예시
+
+  ```sql
+  SELECT SUBSTR(PRODUCT_CODE, 1, 2) AS CATEGORY, COUNT(*) AS PRODUCTS
+  ```
+
+  
+
+### SUBSTRING, LEFT, RIGHT
+
+> MS-SQL, MySQL
+
+```sql
+SUBSTRING({문자열}, {시작위치}, {길이})
+# 문자열에서 시작 위치부터 길이만큼 출력
+
+LEFT({문자열}, {길이})
+# 문자열에서 왼쪽부터 길이만큼 출력
+
+RIGHT({문자열}, {길이})
+# 문자열에서 오른쪽부터 길이만큼 출력
+```
+
+- 예시
+
+  ```sql
+  SELECT LEFT(PRODUCT_CODE, 2) AS CATEGORY, COUNT(*) AS PRODUCTS
+  ```
+
+  
+
+## SQL 문법 순서
+
+1. SELECT
+2. FROM
+3. WHERE
+4. GROUP BY
+5. HAVING
+6. ORDER BY
+
+
+
+## SQL 실제 실행 순서
+
+1. FROM
+2. ON
+3. JOIN
+4. WHERE
+5. GROUP BY
+6. HAVING
+7. SELECT
+8. DISTINCT
+9. ORDER BY
