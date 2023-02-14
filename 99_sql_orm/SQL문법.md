@@ -78,7 +78,15 @@ SELECT {COULMN} FROM {TABLE} LIMIT {CNT}
 SELECT {COL1} FROM {TABLE} WHERE {COL2} BETWEEN {VAL1} AND {VAL2}
 ```
 
+- 예시
 
+  ```sql
+  SELECT CAR_ID
+  FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+  WHERE MONTH(START_DATE) BETWEEN 8 AND 10
+  ```
+
+  
 
 ### IN
 
@@ -279,7 +287,7 @@ DATE_FORMAT(date, format)
 
 > 조건에 따라 서로 다른 값을 반환
 
-- if 문 방식
+- 형식
 
   ```sql
   CASE WHEN {조건식} THEN {반환값}
@@ -289,14 +297,33 @@ DATE_FORMAT(date, format)
   END
   ```
 
-  
+  - 예시
 
   ```sql
   SELECT PT_NAME, PT_NO, GEND_CD, AGE,
   CASE WHEN TLNO IS NULL THEN 'NONE' WHEN TLNO IS NOT NULL THEN TLNO END AS TLNO
   ```
 
-  
+
+
+
+## IF
+
+> 조건에 따라 서로 다른 값을 반환
+
+- 형식
+
+  ```sql
+  IF (조건문, 참일 때 값, 거짓일 때 값)
+  ```
+
+  - 예시
+
+    ```sql
+    SELECT CAR_ID, IF(MAX(END_DATE) >= '2022-10-16', '대여중', '대여 가능') AS AVAILABILITY
+    ```
+
+    
 
 ## DATEDIFF
 
@@ -306,6 +333,7 @@ DATE_FORMAT(date, format)
 
 ```sql
 SELECT DATEDIFF(DATE1, DATE2)
+# DATE1 - DATE2 리턴
 ```
 
 - 예시
@@ -359,7 +387,45 @@ RIGHT({문자열}, {길이})
   SELECT LEFT(PRODUCT_CODE, 2) AS CATEGORY, COUNT(*) AS PRODUCTS
   ```
 
+
+
+
+## 서브쿼리
+
+>  하나의 SQL문에 포함되어 있는 또다른 SQL문
+
+- 서브쿼리를 괄호로 감싸서 사용
+- 서브쿼리는 단일행 또는 복수행 비교 연산자와 함께 사용 가능
+- 서브쿼리에서는 `ORDER BY`를 사용하지 못함
+- 서브쿼리가 사용 가능한 곳
+  - `SELECT`절
+  - `FROM`절
+  - `WHERE`절
+  - `HAVING`절
+  - `ORDER BY`절
+  - `INSERT`문의 `VALUES`절
+  - `UPDATE`문의 `SET`절
+
+- 예시
+
+  ```sql
+  SELECT MONTH(START_DATE) AS MONTH, CAR_ID, COUNT(HISTORY_ID) AS RECORDS
+  FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+  WHERE CAR_ID IN (
+      SELECT CAR_ID
+      FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+      WHERE MONTH(START_DATE) BETWEEN 8 AND 10
+      GROUP BY CAR_ID
+      HAVING COUNT(HISTORY_ID) >= 5)
+      AND MONTH(START_DATE) BETWEEN 8 AND 10
+  GROUP BY MONTH, CAR_ID
+  HAVING COUNT(HISTORY_ID) >= 0
+  ORDER BY MONTH, CAR_ID DESC
+  ```
+
   
+
+
 
 ## SQL 문법 순서
 
