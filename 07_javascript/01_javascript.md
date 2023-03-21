@@ -241,7 +241,7 @@ console.log(x)		// 1
   const c = 3.14
   const d = 2.998e8	// 거듭제곱
   const e = Infinity
-  const f = -Infinisty
+  const f = -Infinity
   const g = NaN		// 산술 연산 불가
   ```
 
@@ -310,9 +310,9 @@ console.log(x)		// 1
   ```js
   let num = 100
   num += 1
-  101
+  // 101
   num++
-  101
+  // 102
   ```
 
 
@@ -387,10 +387,10 @@ console.log(x)		// 1
   ```
   
   ```js
-      let a = 10
-      let b = 20
-      let c = a>b ? a-b : b-a
-      console.log(c)
+  let a = 10
+  let b = 20
+  let c = a>b ? a-b : b-a
+  console.log(c)	// 10
   ```
   
   
@@ -458,17 +458,17 @@ console.log(x)		// 1
   - break가 없으면 case 'Korea'가 참이면 밑의 조건 살피지 않고 그냥 다 출력함
   
     ```js
-        let n = 2
-        switch(n) {
-          case 1:
+    let n = 2
+    switch(n) {
+        case 1:
             console.log('장학금')
             // break
-          case 2:
+        case 2:
             console.log('메달')
-          case 3:
+        case 3:
             console.log('상장')
-          // default :  // 3등 미만 없음
-        }
+            // default :  // 3등 미만 없음
+    }
     ```
   
     - break나 default가 있는게 기본 형태
@@ -574,18 +574,18 @@ console.log(x)		// 1
     - 함수의 반환 값으로 사용 가능
   
   ```js
-  	// 함수 선언식
-  	function add(n1, n2) {
-        return n1 + n2
-      }
-  	
-  	// 함수 표현식
-      const add2 = function(n1, n2) {
-        return n1 + n2
-      }
-      
-      let c = add(10, 20)
-      console.log(c)
+  // 함수 선언식
+  function add(n1, n2) {
+      return n1 + n2
+  }
+  
+  // 함수 표현식
+  const add2 = function(n1, n2) {
+      return n1 + n2
+  }
+  
+  let c = add(10, 20)
+  console.log(c)
   ```
   
   - 중괄호가 끝나면 자동으로 return문 생김(?)
@@ -710,8 +710,8 @@ console.log(x)		// 1
       return [arg1, arg2, restArgs]
   }
   
-  restOpr(1, 2, 3, 4, 5)		// [1, 2, [3, 4, 5]]?? [1, 2, Array(3)]
-  restOpr(1, 2)				// [1, 2, []]?? [1, 2, Array(0)]
+  restOpr(1, 2, 3, 4, 5)		// [1, 2, Array(3)]
+  restOpr(1, 2)				// [1, 2, Array(0)]
   ```
 
   
@@ -1093,7 +1093,7 @@ console.log(x)		// 1
 - `array.reduce(callback(acc, element, [index[, arra]])[, initialValue])`
 
   ```js
-  array.raduce((acc, element, index, array) => {
+  array.reduce((acc, element, index, array) => {
       // do something
   }, initialValue)
   ```
@@ -1389,7 +1389,7 @@ console.log(x)		// 1
      ```
      
      ```js
-     function printUser( { name, userId }) {
+     function printUser({ name, userId }) {
          console.log(name, userId)
      }
      printUser(userInformation)
