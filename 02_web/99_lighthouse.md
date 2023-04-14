@@ -32,7 +32,9 @@
 
 
 
-### Best Practices(표준 모범 사례)
+### Best Practices(권장사항)
+
+
 
 - HTTPS를 사용하는지
 - 동일 출처 정책은 잘 지켜지고 있는지
