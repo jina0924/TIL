@@ -401,6 +401,46 @@ RIGHT({문자열}, {길이})
 
 
 
+## 문자열 연결
+
+### CONCAT
+
+> ORACLE은 매개변수 2개만 받음
+>
+> MySQL은 2개 이상의 매개 변수 허용
+
+```sql
+CONCAT(문자열1, 문자열2)
+```
+
+- 예시
+
+  ```sql
+  SELECT CONCAT('home/grap/src/', BOARD_ID, '/', FILE_ID, FILE_NAME, FILE_EXT) AS FILE_PATH
+  FROM USED_GOODS_FILE
+  ```
+
+
+
+### CONCAT_WS
+
+> MySQL
+
+```sql
+CONCAT_WS(구분자, 문자열 [, 문자열2, 문자열3 ...])
+```
+
+
+
+### ||
+
+> ORACLE
+
+```sql
+(문자열1) || (문자열2) || (문자열3) || ...
+```
+
+
 
 ## 서브쿼리
 
