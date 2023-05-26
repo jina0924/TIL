@@ -447,8 +447,11 @@ CONCAT_WS(구분자, 문자열 [, 문자열2, 문자열3 ...])
 >  하나의 SQL문에 포함되어 있는 또다른 SQL문
 
 - 서브쿼리를 괄호로 감싸서 사용
+
 - 서브쿼리는 단일행 또는 복수행 비교 연산자와 함께 사용 가능
+
 - 서브쿼리에서는 `ORDER BY`를 사용하지 못함
+
 - 서브쿼리가 사용 가능한 곳
   - `SELECT`절
   - `FROM`절
@@ -492,9 +495,57 @@ CONCAT_WS(구분자, 문자열 [, 문자열2, 문자열3 ...])
   ORDER BY FOOD_TYPE DESC
   ```
   
+
+
+
+### WITH
+
+> 반복되는 서브쿼리 블록을 임시테이블로 만들어 재사용 가능
+
+```sql
+# 1개의 임시테이블
+WITH 임시테이블명 AS (
+	서브쿼리문 (SELECT절)
+)
+SELECT 컬럼[, 컬럼, ...]
+FROM 임시테이블명
+```
+
+```sql
+# 2개 이상의 임시테이블
+WITH
+임시테이블명1 AS (
+	서브쿼리문 (SELECT절)
+),
+임시테이블명2 AS (
+	서브쿼리문 (SELECT절)
+)
+SELECT 컬럼[, 컬럼, ...]
+FROM 임시테이블명1, 임시테이블명2
+```
+
+
+
+#### WITH RECURSIVE
+
+```sql
+WITH RECURSIVE 임시테이블명 AS (
+    초기 쿼리
+    UNION RECURSIVE_QUERY WHERE 반복할_조건
+	)
+```
+
+- 예시
+
+  ```sql
+  # 각 시간대별 ROW값 가진 테이블 만들기
+  WITH RECURSIVE TIME AS(
+      SELECT 0 AS HOUR
+      UNION SELECT HOUR + 1 FROM TIME WHERE HOUR < 23
+  )
+  ```
+
   
-
-
 
 ## SQL 문법 순서
 
