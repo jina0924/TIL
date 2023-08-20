@@ -267,3 +267,67 @@ document.querySelector("h1").textContent = "Hello!";
    - removeClass() : 선택한 요소에서 하나 이상의 클래스를 제거
    - toggleClass() : 선택한 요소에서 클래스 추가/제거 사이를 전환
    - css() : 스타일 속성을 설정하거나 반환
+
+
+
+### Method
+
+#### attr
+
+```javascript
+.attr()
+```
+
+- 요소(element)의 속성(attribute)의 값을 가져오거나 속성을 추가함
+
+
+
+1. 속성 값 가져오기
+
+   ```javascript
+   .attr(attributeName)
+   ```
+
+   ```javascript
+   $('div').attr('class');		// div 요소의 class 속성 값을 가져옴
+   ```
+
+2. 속성 추가
+
+   ```javascript
+   .attr(attributeName, value)
+   ```
+
+   ```javascript
+   $('h1').attr('title', 'Hello');		// h1 요소에 title 속성 추가하고 값을 Hello로 함
+
+
+
+#### children
+
+```javascript
+.children([selector])
+```
+
+- 어떤 요소의 자식 요소를 선택함
+
+
+
+예제
+
+- ul 요소의 자식 요소 중 `ip`를 클래스 값으로 가지는 요소의 색을 빨간색으로 만들기
+
+```html
+<body>
+    <ul>
+        <li>Lorem</li>
+        <li class="ip">Ipsum</li>
+        <li>Dolor</li>
+    </ul>
+</body>
+
+<script>
+	$(document).ready( function() {
+        $('ul').chilren('.ip').css('color', 'red');
+    });
+</script>
