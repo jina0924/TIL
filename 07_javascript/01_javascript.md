@@ -862,7 +862,108 @@ console.log(x)		// 1
   str.trimEnd()		// '	hello'
   ```
 
+
+
+
+**substr**
+
+- 문자열을 시작 위치부터 해당 길이만큼 자름
+
+- `substr(start[, length])`
+
+  - length가 없으면 시작위치부터 끝까지 자름
+
+  ```javascript
+  const word = "자바스크립트"
   
+  console.log(word.substr(0, 2));
+  // "자바"
+  
+  console.log(word.substr(2));
+  // "스크립트"
+  ```
+
+
+
+**substring**
+
+- 문자열을 시작 위치부터 종료 위치까지 자름
+
+- `substring(start[, end])`
+
+  - end가 없으면 끝까지 자름
+  - 인자값에 음수를 대입하면 해당 값은 `0`으로 치환됨
+  - end가 음수면 첫 번째 인자와 두 번째 인자가 뒤바뀜
+
+  ```javascript
+  const word = "자바스크립트"
+  
+  console.log(word.substring(0, 2));
+  // "자바"
+  
+  console.log(word.substring(2, 4));
+  // "스크"
+  
+  console.log(word.substring(2));
+  // "스크립트"
+  
+  console.log(word.substring(2, -1));
+  // "자바"
+
+
+
+**slice**
+
+- `substring`과 사용법은 동일하지만 음수 자유롭게 사용 가능
+
+- `slice(start[, end])`
+
+  ```javascript
+  const word = "자바스크립트"
+  
+  console.log(word.slice(0, 2));
+  // "자바"
+  
+  console.log(word.slice(-4));
+  // "스크립트"
+  
+  console.log(word.slice(2, -1));
+  // "스크립"
+  ```
+
+  
+
+**charAt**
+
+- 문자열에서 인자로 주어진 값에 해당하는 문자를 반환
+
+- `charAt(index)`
+
+  ```javascript
+  const word = "javascript"
+  
+  console.log(word.charAt(0));
+  // j
+  ```
+
+
+
+**charCodeAt**
+
+- 문자열에서 인자로 주어진 값에 해당하는 유니코드 값을 반환
+
+- `charCodeAt(index)`
+
+  ```javascript
+  const word = "javascript"
+  
+  console.log(word.charCodeAt(0));
+  // 106(j의 유니코드)
+  ```
+
+  
+
+
 
 ## 배열 (Arrays)
 
