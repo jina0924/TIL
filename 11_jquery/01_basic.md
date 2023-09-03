@@ -303,6 +303,45 @@ document.querySelector("h1").textContent = "Hello!";
 
 
 
+#### parent
+
+```javascript
+.parent([selector])
+```
+
+- 어떤 요소의 부모 요소를 선택함
+- selector가 없으면 바로 위에 존재하는 부모 요소 반환
+
+예제
+
+- `p`태그의 부모 요소 중 `div`의 색을 빨간색으로 만들기
+
+  ```javascript
+  $('p').parent('div').css('color', 'red');
+  ```
+
+  
+
+#### closest
+
+```javascript
+.closest(selector)
+```
+
+- 어떤 요소의 부모 중 selector를 만족하는 가장 가까운 부모를 반환
+
+
+
+#### siblings()
+
+```javascript
+.siblings([selector])
+```
+
+- 어떤 요소의 형제 요소를 선택
+
+
+
 #### children
 
 ```javascript
@@ -310,8 +349,6 @@ document.querySelector("h1").textContent = "Hello!";
 ```
 
 - 어떤 요소의 자식 요소를 선택함
-
-
 
 예제
 
@@ -331,3 +368,70 @@ document.querySelector("h1").textContent = "Hello!";
         $('ul').chilren('.ip').css('color', 'red');
     });
 </script>
+```
+
+
+
+#### find
+
+```javascript
+.find(selector)
+```
+
+- 어떤 요소의 하위 요소 중 특정 요소를 찾을 때 사용
+
+예제
+
+- `h1` 요소의 하위 요소 중 `span` 요소 선택
+
+  ```javascript
+  $('h1').find('span')
+  ```
+
+  
+
+### this
+
+```javascript
+$(this)
+```
+
+- 이벤트 핸들러 내에서 이벤트가 발생한 요소를 가리키는 역할
+
+- javascript에서의 this와 jQuery에서의 this 차이
+
+  | javascript                           | jQuery               |
+  | ------------------------------------ | -------------------- |
+  | 현재 실행 컨텍스트에서 참조되는 객체 | 이벤트가 발생한 요소 |
+  | this                                 | $(this)[0]           |
+
+예제
+
+- 여러 버튼 중 클릭한 버튼만 text 변경하기
+
+  ```html
+  <button class="btn">1번</button>
+  <button class="btn">2번</button>
+  <button class="btn">3번</button>
+  
+  <script>
+  	$('.btn').click(function() {
+          console.log(this);		// 1
+          console.log($(this));	// 2
+          $(this).text('눌렀지롱');
+      })
+  </script>
+  ```
+
+  ```tex
+  // 1(this)
+  <button class="btn">1번</button>
+  
+  // 2($(this))
+  S.fn.init [button.btn]
+  	0: button.btn
+      length: 1
+      [[Prototype]]: Object(0)
+  ```
+
+  
